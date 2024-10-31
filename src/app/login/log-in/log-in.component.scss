@@ -1,0 +1,61 @@
+html, body {
+    height: 100%; /* Sayfa yüksekliğini %100 ayarla */
+    margin: 0; /* Varsayılan margin'i kaldır */
+}
+
+.login-box {
+    background-image: url('../../../assets/images/Shape.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh; /* Yükseklik %100 */
+    overflow: hidden; /* Taşan içeriği gizle */
+    display: flex; /* Flexbox kullanarak düzenleme */
+    flex-direction: column; /* Dikey yönde düzenleme */
+}
+
+header {
+    padding: 80px 30px 10px 30px;
+
+    .logo,
+    h1 {
+        padding-bottom: 32px;
+    }
+
+    h1 {
+        font-family: Inter;
+        font-size: 24px;
+        font-weight: 600;
+        line-height: 35.28px;
+        text-align: left;
+        color: #fffc;
+    }
+}
+
+main {
+    background-color: #fff;
+    border-top-left-radius: 32px;
+    border-top-right-radius: 32px;
+    padding: 20px;
+    flex: 1; /* Ana bölümün tüm alanı kaplamasını sağlar */
+    display: flex; /* Flexbox kullanarak düzenleme */
+    flex-direction: column; /* Dikey yönde düzenleme */
+    justify-content: space-between; /* İçeriği en üst ve en alt kısımda yerleştir */
+    overflow: auto; /* Taşan içeriği kaydırılabilir yap */
+}
+
+.form-floating {
+    margin-bottom: 15px; /* Giriş alanları arasında boşluk */
+}
+
+
+
+
+form{
+    input{
+        border: 1px solid #D0D0D0;
+        outline: none; 
+    }
+    input:focus{
+        outline: none;
+    }
+}

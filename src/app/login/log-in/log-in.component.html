@@ -1,0 +1,26 @@
+<ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
+
+<div class="login-box">
+    <header>
+        <div class="logo">
+            <img src="../../../assets/images/foodcityLogo.svg" alt="">
+        </div>
+        <h1>Xoş gəlmisiniz!</h1>
+    </header>
+    <main>
+        <form action="" [formGroup]="form">
+            <div class="form-floating mb-3">
+                <input type="text" class="form-control  custom-input" id="name" placeholder="Name" formControlName="username" >
+                <label for="name">İstifadəçi adı</label>
+            </div>
+            <div class="form-floating mb-3">
+                <input type="password" class="form-control  custom-input" id="password" placeholder="Şifrə" formControlName="password">
+                <label for="password">Şifrə</label>
+            </div>
+        
+        </form>
+        <button class="confirm_button" type="submit" (click)="login()">
+            Daxil ol
+        </button>
+    </main>
+</div>

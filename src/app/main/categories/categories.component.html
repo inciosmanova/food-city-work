@@ -1,0 +1,192 @@
+<ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
+
+<div class="all_categories">
+    <!-- <div class="box" routerLink="information">
+        <div class="head d-flex">
+            <img src="../../../assets/images/icon/user-octagon.svg" alt="">
+            <h3>Məlumatlarım</h3>
+        </div>
+        <div class="info">
+            <table>
+           
+                <tr>
+                  <td>HypoCaust</td>
+                  <td>2400120025</td>
+                </tr>
+                <tr>
+                  <td>CIF</td>
+                  <td>Griffin</td>
+                </tr>
+              </table>
+        </div>
+    </div>
+
+    <div class="box" routerLink="invoices" >
+        <div class="head d-flex">
+            <img src="../../../assets/images/icon/user-octagon.svg" alt="">
+            <h3>Hesab fakturalarım</h3>
+        </div>
+        <div class="info">
+            <table>
+           
+                <tr>
+                  <td>Ümumi faktura sayı</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>Ümumi faktura borcu</td>
+                  <td>20000</td>
+                </tr>
+              </table>
+        </div>
+    </div>
+
+    <div class="box" routerLink="contracts">
+        <div class="head d-flex">
+            <img src="../../../assets/images/icon/user-octagon.svg" alt="">
+            <h3>Müqavilələrim</h3>
+        </div>
+        <div class="info">
+            <table>
+           
+                <tr>
+                  <td>Ümumi müqavilə sayı</td>
+                  <td>5</td>
+                </tr>
+                <tr>
+                  <td>Aktiv müqavilə sayı</td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                    <td>Bitmiş müqavilə</td>
+                    <td>2</td>
+                  </tr>
+              </table>
+        </div>
+    </div> -->
+
+
+
+    <div class="box" *ngFor="let item of menu" routerLink="{{item.link}}">
+        <div class="head d-flex">
+            <img src="../../../assets/images/icon/{{item.icon}}" alt="">
+            <h3>{{item.value}}</h3>
+        </div>
+        <div class="info" *ngIf="item.subObject" >
+            <table >
+           
+                <tr *ngIf="item.subObject?.companyName">
+                  <td>HypoCaust</td>
+                  <td>{{item.subObject?.companyName}}</td>
+                </tr>
+                <tr *ngIf="item.subObject?.cif">
+                  <td>CIF</td>
+                  <td>{{item.subObject?.cif}}</td>
+                </tr>
+                <tr *ngIf="item.subObject?.totalInvoiceCount">
+                  <td>Ümumi faktura sayı</td>
+                  <td>{{item.subObject?.totalInvoiceCount}}</td>
+                </tr>
+                <tr *ngIf="item.subObject?.totalUnPaidAmount">
+                    <td>Ümumi faktura borcu</td>
+                    <td>{{item.subObject?.totalUnPaidAmount}}</td>
+                  </tr>
+
+                  <tr *ngIf="item.subObject?.total">
+                    <td>Ümumi müqavilə sayı</td>
+                    <td>{{item.subObject?.total}}</td>
+                  </tr>
+                  <tr *ngIf="item.subObject?.active">
+                    <td>Aktiv müqavilə sayı</td>
+                    <td>{{item.subObject?.active}}</td>
+                          </tr>
+                  <tr *ngIf="item.subObject?.deactive">
+                      <td>Bitmiş müqavilə</td>
+                      <td>{{item.subObject?.deactive}}</td>
+
+
+                      <tr *ngIf="item.subObject?.total">
+                        <td>Ümumi sifariş sayı</td>
+                        <td>{{item.subObject?.total}}</td>
+                      </tr>
+                      <tr *ngIf="item.subObject?.approve">
+                        <td>İcra edilmiş sifariş sayı</td>
+                        <td>{{item.subObject?.approve}}</td>
+                      </tr>
+                      <tr *ngIf="item.subObject?.decline">
+                          <td>İmtina edilmiş müraciət sayı</td>
+                          <td>{{item.subObject?.decline}}</td>
+                        </tr>
+              </table>
+        </div>
+    </div>
+
+
+
+    <!-- <div class="box">
+        <div class="head d-flex">
+            <img src="../../../assets/images/icon/user-octagon.svg" alt="">
+            <h3>Sənədlərim</h3>
+        </div>
+        <div class="info">
+            <table>
+           
+                <tr>
+                  <td class="yellow">Təsdiq gözlənən sənəd sayı</td>
+                  <td class="yellow">20</td>
+                </tr>
+                <tr>
+                  <td class="green">Təsdiqlənən sənəd sayı</td>
+                  <td class="green">150</td>
+                </tr>
+                <tr>
+                    <td class="red">İmtina edilmiş sənəd sayı</td>
+                    <td class="red">150</td>
+                  </tr>
+              </table>
+        </div>
+    </div> -->
+<!-- 
+
+    <div class="box" routerLink="orders">
+        <div class="head d-flex">
+            <img src="../../../assets/images/icon/user-octagon.svg" alt="">
+            <h3>Sifarişlərim</h3>
+        </div>
+        <div class="info">
+            <table>
+           
+                <tr>
+                  <td>Ümumi sifariş sayı</td>
+                  <td>20</td>
+                </tr>
+                <tr>
+                  <td>İcra edilmiş sifariş sayı</td>
+                  <td>150</td>
+                </tr>
+                <tr>
+                    <td>İmtina edilmiş müraciət sayı</td>
+                    <td>150</td>
+                  </tr>
+              </table>
+        </div>
+    </div>
+ -->
+<!-- 
+    <div class="box">
+        <div class="head d-flex">
+            <img src="../../../assets/images/icon/user-octagon.svg" alt="">
+            <h3>Hesabatlarım</h3>
+        </div>
+        <div class="info">
+            <table>
+           
+                <tr>
+                  <td>Ümumi faktura</td>
+                  <td>20</td>
+                </tr>
+              
+              </table>
+        </div>
+    </div> -->
+</div>

@@ -1,0 +1,109 @@
+<ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
+
+<h1 class="header_text">Çeşidləmə əməliyyatlarım</h1>
+<main>
+
+    <mat-form-field class="w-100"  [formGroup]="dateFilter">
+        <mat-date-range-input [rangePicker]="picker" >
+            <input matStartDate placeholder="Start date" formControlName="beginDate">
+            <input matEndDate placeholder="End date" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker>
+            <mat-date-range-picker-actions>
+                <button mat-button matDateRangePickerCancel>Cancel</button>
+                <button mat-raised-button matDateRangePickerApply (click)="onDateRangeChange()">Apply</button>
+              </mat-date-range-picker-actions>
+        </mat-date-range-picker>
+        
+    </mat-form-field>
+
+
+    <div class="row mb-2" >
+        <div class="col-4 custom_colored_box" *ngFor="let item of statusResult" (click)="getAllOrdersBrowseMobile(item.id)">
+            <div 
+            [ngClass]="{
+                'custom-card_green green_text': item.id === 4 || item.id === 5,
+                'custom-card_yellow yellow_text  ': item.id === 3,
+                'custom-card_red red_text': item.id === 6 ||  item.id === 2 ||item.id === 1,
+              }">
+                <h1>{{item.value}}</h1>
+                <h1>{{item.count}}</h1>
+            </div>      
+        </div>
+     
+         
+  
+    </div>
+
+    <div class="table_list info custom-card_red m-0"
+    *ngFor="let item of browseResult"
+    >
+        <table>
+
+            <tr>
+                <td class="head">{{item.warehouseDocNo}}</td>
+                <td colspan="2">
+                    <!-- <h4 class="green_text header d-flex">İcra edilib</h4> -->
+                </td>
+            </tr>
+       
+       
+
+
+            <tr>
+                <td>Sifariş № 1 </td>
+                <td>{{item.orderType}}</td>
+                <td>{{item.orderNo}}</td>
+            </tr>
+            <tr>
+                <td>Başlanma tarixi</td>
+                <td colspan="2">{{item.date}}</td>
+
+            </tr>
+
+            <tr>
+                <td>İcra tarixi</td>
+                <td colspan="2">{{item.plannedExecutionDate}}</td>
+
+            </tr>
+
+
+         
+
+
+        
+
+            <tr>
+                <td>NV № </td>
+                <td colspan="2">{{item.truckplate}}</td>
+
+            </tr>
+
+
+            
+            <tr>
+                <td>Kamera</td>
+                <td colspan="2">{{item.warehouseDoorName}}</td>
+
+            </tr>
+            <!-- <tr>
+                <td>Məhsul</td>
+                <td>Nektarin</td>
+                <td></td>
+            </tr> -->
+
+
+          
+         
+
+
+        </table>
+       
+
+    </div>
+
+
+
+
+</main>

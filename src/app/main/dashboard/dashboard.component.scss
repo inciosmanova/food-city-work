@@ -1,0 +1,209 @@
+header {
+    .user_text {
+        display: flex;
+
+        img {
+            padding-right: 10px;
+        }
+
+        h1 {
+            //styleName: SemiBold;
+            font-family: Inter;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 26.46px;
+            text-align: left;
+            color: #1A1A1A;
+
+        }
+
+        h5 {
+            //styleName: Medium;
+            font-family: Inter;
+            font-size: 12px;
+            font-weight: 500;
+            line-height: 14.52px;
+            letter-spacing: 0.10000000149011612px;
+            text-align: left;
+            color: #505050;
+
+        }
+    }
+}
+
+
+
+.dashboard_box {
+    position: relative;
+    height: 200px;
+
+    .top_box {
+        background: #D7EDE2;
+        width: 60%;
+        border-radius: 12px;
+        clip-path: polygon(0 0, 100% 0, 72% 100%, 0% 100%);
+        position: absolute;
+        height: 100%;
+background-image: url('../../../assets/images/icon/Shape\ \(1\).svg');
+background-repeat: no-repeat;
+        h1 {
+            font-family: Inter;
+            font-size: 18px;
+            font-weight: 600;
+            line-height: 23.52px;
+            text-align: left;
+            color: #087B61;
+        }
+
+        button {
+            width: 80%;
+        }
+    }
+
+    .bottom_box {
+        width: 100%;
+        height: 90%;
+        margin: auto;
+        border: 1px solid #E2E2E2;
+        background: #F2F2F2;
+        border-radius: 12px;
+        text-align: end;
+        position: absolute;
+        z-index: -2;
+        top: 5%;
+
+        h2 {
+            //styleName: SemiBold;
+            font-family: Inter;
+            font-size: 26px;
+            font-weight: 600;
+            line-height: 35.28px;
+            color: #505050;
+
+        }
+
+        p {
+            font-family: Inter;
+            font-size: 15px;
+            font-weight: 400;
+            line-height: 14.52px;
+            color: #828282;
+
+        }
+    }
+}
+
+
+
+.table-container {
+    border: 1px solid #cfd8dc;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 100%;
+}
+
+.table-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #009688;
+    color: white;
+    padding: 10px;
+    //styleName: Medium;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 16.94px;
+    text-align: left;
+
+    h2 {
+        font-size: 16px;
+        margin: 0;
+    }
+
+
+    table {
+        width: 100%;
+    }
+
+    th.mat-header-cell {
+        background-color: #CEEAE7 !important;
+
+        font-weight: bold;
+    }
+
+    td.mat-cell {
+        text-align: center;
+    }
+
+    .mat-elevation-z8 {
+        box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2),
+            0px 8px 10px 1px rgba(0, 0, 0, 0.14),
+            0px 3px 14px 2px rgba(0, 0, 0, 0.12);
+    }
+}
+
+th {
+    background-color: #CEEAE7 !important;
+
+}
+
+.important_box {
+    .box {
+        background-color: #F2F2F2;
+        border-radius: 8px;
+        padding: 30px 0;
+        margin: 10px 0px;
+        background-repeat: no-repeat;
+        background-position-x: right;
+        background-position-y: 40px;
+        h2 {
+            //styleName: Medium;
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 23.52px;
+            text-align: left;
+            color: #505050;
+            padding-left: 15px;
+            width: 60%;
+
+        }
+    }
+    .col-6:nth-child(2){
+        .box{
+        background-color: #D7EDE2;
+        h2{
+            color: #087B61;
+        }
+    }
+    }
+    .col-6:nth-child(3){
+        .box{
+        background-color: #D7EDE2;
+        h2{
+            color: #087B61;
+        }
+    }
+    }
+    .col-6:nth-child(1){
+        .box{
+            background-image: url('../../../assets/images/icon/warehouse.svg');
+    }
+    }
+    .col-6:nth-child(2){
+        .box{
+            background-image: url('../../../assets/images/icon/sortingplan.svg');
+    }
+    }
+    .col-6:nth-child(4){
+        .box{
+         
+            background-image: url('../../../assets/images/icon/terminal.svg');
+    }
+    }
+    .col-6:nth-child(3){
+        .box{
+            background-image: url('../../../assets/images/icon/customs.svg');
+    }
+    }
+}

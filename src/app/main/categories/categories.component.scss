@@ -1,0 +1,42 @@
+.all_categories {
+    .box {
+        margin-top: 20px;
+        background: linear-gradient(305.42deg, #D7EDE2 14.58%, rgba(185, 240, 247, 0.22) 88.54%);
+        border-radius: 6px;
+        height: 12pc;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        cursor: pointer;
+
+        h3 {
+            //styleName: Medium;
+            font-family: Inter;
+            font-size: 16px;
+            font-weight: 500;
+            line-height: 23.52px;
+            color: #066550;
+            padding-top: 10px;
+            padding-left: 15px;
+
+
+
+
+        }
+
+
+
+    }
+
+    .yellow {
+        color: #DBBD20 !important;
+    }
+
+    .green {
+        color: #0D9677 !important;
+    }
+
+    .red {
+        color: #ED635C !important;
+    }
+}

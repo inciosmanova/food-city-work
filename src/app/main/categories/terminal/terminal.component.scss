@@ -1,0 +1,11 @@
+.head {
+    font-weight: 600;
+    font-size: 17px;
+}
+
+
+
+::ng-deep .mdc-line-ripple {
+    display: none;
+    /* Ripple efektini de kaldırmak isterseniz */
+}

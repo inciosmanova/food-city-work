@@ -1,0 +1,139 @@
+<ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
+
+<h1 class="header_text">Anbar əməliyyatlarım</h1>
+<main>
+
+    <mat-form-field class="w-100"  [formGroup]="dateFilter">
+        <mat-date-range-input [rangePicker]="picker" >
+            <input matStartDate placeholder="Start date" formControlName="beginDate">
+            <input matEndDate placeholder="End date" formControlName="endDate">
+        </mat-date-range-input>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-date-range-picker #picker>
+            <mat-date-range-picker-actions>
+                <button mat-button matDateRangePickerCancel>Cancel</button>
+                <button mat-raised-button matDateRangePickerApply (click)="onDateRangeChange()">Apply</button>
+              </mat-date-range-picker-actions>
+        </mat-date-range-picker>
+        
+    </mat-form-field>
+
+
+    <div class="row mb-2" >
+        <div class="col-4 custom_colored_box" *ngFor="let item of statusResult" (click)="getAllWarehouseOperation(item.id)">
+            <div 
+            [ngClass]="{
+                'custom-card_green green_text': item.id === 2,
+                'custom-card_yellow yellow_text  ': item.id === 1,
+                'custom-card_red red_text': item.id === 3
+              }">
+                <h1>{{item.value}}</h1>
+                <h1>{{item.count}}</h1>
+            </div>      
+        </div>
+     
+         
+  
+    </div>
+
+    <!-- <div 
+    [ngClass]="{
+        'table_list_green info_green custom-card_green': item.id === 2,
+        'table_list_yellow info_yellow custom-card_yellow m-0': item.id === 1,
+        'table_list_red info_red custom-card_red m-0': item.id === 3
+      }" *ngFor="let item of browseResult"> -->
+      <div  class="table_list_green info_green custom-card_green" *ngFor="let item of browseResult">
+       <table>
+
+        <tr>
+            <td class="head">{{item.docNo}}</td>
+            <!-- <td>
+                <h4 class="green_text header d-flex">İcra edilib</h4>
+            </td> -->
+        </tr>
+        <tr>
+            <td>Müqavilə növü</td>
+            <td  colspan="2">{{item.contractType}}</td>
+        </tr>
+        <tr>
+            <td>Sifariş № 1</td>
+            <td  colspan="2" >{{item.orderNo}}</td>
+        </tr>
+        <tr>
+            <td>Sifariş tarixi</td>
+            <td  colspan="2">{{item.date}}</td>
+        </tr>
+        <tr>
+            <td>İcra tarixi</td>
+            <td  colspan="2">{{item.plannedExecutionDate}}</td>
+
+        </tr>
+
+
+        <tr>
+            <td>NV Datıcı № </td>
+            <td  colspan="2">{{item.truckplate}}</td>
+
+        </tr>
+
+
+        <tr>
+            <td>Qoşqu № </td>
+            <td  colspan="2">{{item.trailerplate}}</td>
+
+        </tr>
+
+        <tr>
+            <td>Giriş tarixi</td>
+            <td  colspan="2">{{item.terminalEntryDate}}</td>
+
+        </tr>
+
+        <tr>
+            <td>Çıxış tarixi</td>
+            <td  colspan="2">{{item.terminalExitDate}}</td>
+
+        </tr>
+
+        <tr>
+            <td>Artıq çəki  </td>
+            <td  colspan="2">{{item.extraWeight}}</td>
+
+        </tr>
+
+
+        <tr>
+            <td>Yanacaq limiti</td>
+            <td  colspan="2">{{item.ydm}}</td>
+
+        </tr>
+
+   
+        <tr>
+            <td>Tərəzi çəkisi</td>
+            <td  colspan="2">{{item.scalesIndicator}}</td>
+
+        </tr>
+
+
+        <tr>
+            <td>Bəyan edən</td>
+            <td  colspan="2">{{item.createUser}}</td>
+
+        </tr>
+
+   
+
+
+      
+     
+
+
+    </table>
+
+    </div>
+
+
+
+   
+</main>

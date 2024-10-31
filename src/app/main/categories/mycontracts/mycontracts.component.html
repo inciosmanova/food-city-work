@@ -1,0 +1,116 @@
+<ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
+
+<h1 class="header_text">Müqavilələrim</h1>
+<main>
+<div *ngFor="let item of data">
+  <div class="table_list info custom-card_green">
+    <table>
+       
+        <tr>
+          <td class="head">CO24-00415</td>
+          <td> <h4  class="circle_text header d-flex"><span class="red_circle"></span> Stoplanmış</h4></td>
+        </tr>
+        <tr>
+          <td>Növü</td>
+          <td>{{item.contractType}}</td>
+        </tr>
+        <tr>
+            <td>Başlanğıc tarix</td>
+            <td>{{item.beginDate}}</td>
+          </tr>
+          <tr>
+            <td>Son tarix</td>
+            <td>{{item.endDate}}</td>
+          </tr>
+
+          <tr>
+            <td>Müddət</td>
+            <td>{{item.monthDifference}}</td>
+          </tr>
+
+
+          <tr>
+            <td>Sifariş № 1 </td>
+            <td>{{item.orderDetails}}</td>
+          </tr>
+
+          <tr>
+            <td>Direktor</td>
+            <td>{{item.director}}</td>
+          </tr>
+          <tr>
+            <td>İmza</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>Nümayəndə</td>
+            <td></td>
+          </tr>
+          <tr>
+            <td>İmza</td>
+            <td></td>
+          </tr>
+
+          
+      </table>
+      <a class="openConfirmPopUp w-100">Şərtlərə bax</a>
+  
+</div>
+</div>
+
+
+
+    <!-- <div class="table_list info custom-card_green mt-2">
+        <table>
+           
+            <tr>
+              <td class="head">CO24-00415</td>
+              <td> <h4  class="circle_text header d-flex"><span class="green_circle"></span> Aktiv</h4></td>
+            </tr>
+            <tr>
+              <td>Növü</td>
+              <td>Saxlanc-Meyvə qəbulu</td>
+            </tr>
+            <tr>
+                <td>Başlanğıc tarix</td>
+                <td>29.07.2024</td>
+              </tr>
+              <tr>
+                <td>Son tarix</td>
+                <td>29.07.2025</td>
+              </tr>
+
+              <tr>
+                <td>Müddət</td>
+                <td>12 ay</td>
+              </tr>
+
+
+              <tr>
+                <td>Sifariş № 1 </td>
+                <td>Saxlanc giriş WH24-08174</td>
+              </tr>
+
+              <tr>
+                <td>Sifariş № 1 </td>
+                <td>Saxlanc giriş WH24-08174</td>
+              </tr>
+              <tr>
+                <td>İmza</td>
+                <td></td>
+              </tr>
+              <tr>
+                <td>Nümayəndə</td>
+                <td>Tağı Tağıyev</td>
+              </tr>
+              <tr>
+                <td>İmza</td>
+                <td></td>
+              </tr>
+
+              
+          </table>
+          <a class="openConfirmPopUp w-100">Şərtlərə bax</a>
+      
+    </div> -->
+</main>

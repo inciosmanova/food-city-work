@@ -1,0 +1,57 @@
+<ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
+
+<h1 class="header_text">Məlumatlarım</h1>
+<main>
+   <div *ngFor="let item of companyData">
+      <h2 class="backText">{{item.userName}}</h2>
+      <div class="table_list info">
+           <div class="info_box">
+              <h5 class='header'>Müştəri tipi</h5>
+              <h4 class='header'>{{item.ctype}}</h4>
+           </div>
+  
+           <div class="info_box">
+              <h5 class='header'>Şəxsiyyət vəsiqəsi Nº/ VÖEN</h5>
+              <h4 class='header'>{{item.voen}}</h4>
+           </div>
+  
+           <div class="info_box">
+              <h5 class='header'>Ünvan</h5>
+              <h4 class='header'>{{item.address}}</h4>
+           </div>
+  
+           <div class="info_box">
+              <h5 class='header'>Telefon</h5>
+              <h4 class='header'>{{item.phone}}</h4>
+           </div>
+  
+           <div class="info_box">
+              <h5 class='header'>Vəzifəsi</h5>
+              <h4 class='header'></h4>
+           </div>
+  
+           <div class="info_box">
+              <h5 class='header'>Şirkət</h5>
+              <h4 class='header'></h4>
+           </div>
+  
+           <div class="info_box">
+              <h5 class='header'>E-mail</h5>
+              <h4 class='header'></h4>
+           </div>
+  
+           <div class="info_box">
+              <h5 class='header'>İmza</h5>
+              <h4 class='header'></h4>
+           </div>
+  
+           <div class="info_box">
+              <h4 *ngIf="item.block=='Deaktiv'" class="circle_text header d-flex"><span class="green_circle"></span> Blokda deyil</h4>
+              <h4 *ngIf="item.block=='Aktiv'"  class="circle_text header d-flex"><span class="red_circle"></span> Blokdadır</h4>
+           </div>
+         
+        
+      </div>
+   </div>
+
+</main>

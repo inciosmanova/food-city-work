@@ -1,1 +1,420 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap'); 
+html,
+body {
+  height: 100%;
+}
+*{
+    font-family: "Inter", sans-serif!important;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+
+.reject_button {
+  background:   #ED635C;
+
+  /* Buton arka plan rengi */
+  color: #fff;
+  /* Buton yazı rengi */
+  width: 100%;
+  /* Buton genişliği %100 */
+  padding: 10px;
+  /* Butonun iç boşluğu */
+  font-family: Inter;
+  /* Buton yazı fontu */
+  font-size: 16px;
+  /* Buton yazı boyutu */
+  font-weight: 600;
+  /* Buton yazı kalınlığı */
+  line-height: 19.36px;
+  /* Buton yazı satır yüksekliği */
+  text-align: center;
+  /* Buton yazı ortalaması */
+  border: none;
+  /* Kenarlık yok */
+  border-radius: 4px;
+  /* Buton köşe yuvarlama */
+  margin-top: auto;
+  /* Butonu en alta it */
+}
+
+.confirm_button {
+  background: #0D9677;
+  /* Buton arka plan rengi */
+  color: #fff;
+  /* Buton yazı rengi */
+  width: 100%;
+  /* Buton genişliği %100 */
+  padding: 10px;
+  /* Butonun iç boşluğu */
+  font-family: Inter;
+  /* Buton yazı fontu */
+  font-size: 16px;
+  /* Buton yazı boyutu */
+  font-weight: 600;
+  /* Buton yazı kalınlığı */
+  line-height: 19.36px;
+  /* Buton yazı satır yüksekliği */
+  text-align: center;
+  /* Buton yazı ortalaması */
+  border: none;
+  /* Kenarlık yok */
+  border-radius: 4px;
+  /* Buton köşe yuvarlama */
+  margin-top: auto;
+  /* Butonu en alta it */
+}
+
+.info, .info_green , .info_yellow , .info_red , .info_grey {
+  padding: 30px;
+width: 98%;
+table{
+  width: 100%;
+}
+  td {
+    //styleName: Medium;
+    font-family: Inter;
+    font-size: 16px;
+    font-weight: 6 00;
+    line-height: 23.52px;
+    text-align: left;
+    color: #505050;
+    width: 50%;
+    padding: 5px 0px;
+
+  }
+
+  td:last-child {
+    text-align: end;
+  }
+}
+
+.header_text {
+  //styleName: SemiBold;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 26.46px;
+  color: #1A1A1A;
+
+}
+.header_green , .header_red , .header_yellow{
+  text-align:right;
+}
+.backText {
+  //styleName: Medium;
+  font-family: Inter;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 23.52px;
+  color: #fff;
+  background-color: #0D9677;
+  border-radius: 12px;
+  padding: 15px 5px;
+  margin: 0;
+  text-align: center;
+}
+
+.table_list {
+  background-color: #F2F2F2;
+  margin: 0 10px;
+  cursor: pointer;
+
+  td {
+    background-color: #F2F2F2 !important;
+    border: none;
+    padding: 3px 0 !important;
+  }
+}
+
+.openConfirmPopUp {
+  color: #0D9677;
+  //styleName: Underlined Medium;
+  font-family: Inter;
+  font-size: 18px;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+
+}
+.green_text{
+  color: #0D9677;
+
+}
+.green_circle {
+
+  width: 20px;
+  height: 20px;
+  background-color: #0D9677;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.red_circle {
+  width: 20px;
+  height: 20px;
+  background-color: #ED635C;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.custom-card_green {
+  background-color: #F2F2F2;
+  cursor: pointer;
+  padding: 20px;
+
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  color: #CEEAE7;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  h1{
+    font-size: 14px;
+  }
+}
+
+.custom-card_green::before,
+.custom-card_green::after {
+  content: '';
+  position: absolute;
+  border: 2px solid #CEEAE7;
+  /* Border rengini ayarlayın */
+
+}
+
+.custom-card_green::before {
+  top: 0;
+  left: 0;
+  width: 40px;
+  /* Üst sol köşe - uzunluk 40px */
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-width: 2px 0 0 2px;
+}
+
+.custom-card_green::after {
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  /* Alt sağ köşe - uzunluk 40px */
+  height: 40px;
+  border-bottom-right-radius: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+
+.custom-card_red {
+  background-color: #F2F2F2;
+  cursor: pointer;
+
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  color: #F0C3C3;
+  font-family: Arial, sans-serif;
+h1{
+  font-size: 14px;
+}
+
+
+}
+
+.custom-card_red::before,
+.custom-card_red::after {
+  content: '';
+  position: absolute;
+  border: 2px solid #F0C3C3;
+  /* Border rengini ayarlayın */
+
+}
+
+.custom-card_red::before {
+  top: 0;
+  left: 0;
+  width: 40px;
+  /* Üst sol köşe - uzunluk 40px */
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-width: 2px 0 0 2px;
+}
+
+.custom-card_red::after {
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  /* Alt sağ köşe - uzunluk 40px */
+  height: 40px;
+  border-bottom-right-radius: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+
+.yellow_text{
+  color: #EEDC63;
+}
+
+
+.custom-card_yellow {
+  background-color: #F2F2F2;
+  cursor: pointer;
+  padding: 20px;
+
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  color: #EEDC63;
+  font-family: Arial, sans-serif;
+  h1{
+    font-size: 14px;
+  }
+}
+
+.custom-card_yellow::before,
+.custom-card_yellow::after {
+  content: '';
+  position: absolute;
+  border: 2px solid #EEDC63;
+  /* Border rengini ayarlayın */
+
+}
+
+.custom-card_yellow::before {
+  top: 0;
+  left: 0;
+  width: 40px;
+  /* Üst sol köşe - uzunluk 40px */
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-width: 2px 0 0 2px;
+}
+
+.custom-card_yellow::after {
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  /* Alt sağ köşe - uzunluk 40px */
+  height: 40px;
+  border-bottom-right-radius: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+
+
+
+.custom-card_grey {
+  position: relative;
+  display: inline-block;
+  padding: 10px;
+  background-color: #f5f5f5;
+  border-radius: 10px;
+  text-align: center;
+  font-size: 15px;
+  color: #D0D0D0;
+  font-family: Arial, sans-serif;
+  h1{
+    font-size: 14px;
+  }
+}
+
+.custom-card_grey::before,
+.custom-card_grey::after {
+  content: '';
+  position: absolute;
+  border: 2px solid #D0D0D0;
+  /* Border rengini ayarlayın */
+
+}
+
+.custom-card_grey::before {
+  top: 0;
+  left: 0;
+  width: 40px;
+  /* Üst sol köşe - uzunluk 40px */
+  height: 40px;
+  border-top-left-radius: 10px;
+  border-width: 2px 0 0 2px;
+}
+
+.custom-card_grey::after {
+  bottom: 0;
+  right: 0;
+  width: 40px;
+  /* Alt sağ köşe - uzunluk 40px */
+  height: 40px;
+  border-bottom-right-radius: 10px;
+  border-width: 0 2px 2px 0;
+}
+
+.col-4 {
+  .table_list {
+    padding: 5px;
+    width: 95%;
+
+    h1 {
+      font-size: 16px !important;
+
+    }
+  }
+  .table_list, .table_list_green , .table_list_green , .table_list_yellow{
+    padding: 5px;
+    width: 95%;
+
+    h1 {
+      font-size: 16px !important;
+
+    }
+  }
+}
+
+.red_text{
+  color: #DD433B;
+font-size: 16px;
+font-weight: 500;
+line-height: 23.52px;
+
+}
+.grey_text{
+  color: #D0D0D0;
+font-size: 16px;
+font-weight: 500;
+line-height: 23.52px;
+
+}
+
+.custom_colored_box{
+  div{
+     height: 75px;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     width: 100%;
+  margin-top: 10px;
+
+  }
+ }
