@@ -1,6 +1,6 @@
 <ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
 
-<h1 class="header_text">Anbar əməliyyatlarım</h1>
+<h1 class="header_text">Terminal əməliyyatlarım</h1>
 <main>
 
     <mat-form-field class="w-100"  [formGroup]="dateFilter">
@@ -36,13 +36,13 @@
   
     </div>
 
-    <!-- <div 
+    <div 
     [ngClass]="{
-        'table_list_green info_green custom-card_green': item.id === 2,
-        'table_list_yellow info_yellow custom-card_yellow m-0': item.id === 1,
-        'table_list_red info_red custom-card_red m-0': item.id === 3
-      }" *ngFor="let item of browseResult"> -->
-      <div  class="table_list_green info_green custom-card_green" *ngFor="let item of browseResult">
+        'table_list_green info_green custom-card_green': item.statusId === 2,
+        'table_list_yellow info_yellow custom-card_yellow m-0': item.statusId === 1,
+        'table_list_red info_red custom-card_red m-0': item.statusId === 3
+      }" *ngFor="let item of browseResult">
+      <!-- <div  class="table_list_green info_green custom-card_green" *ngFor="let item of browseResult"> -->
        <table>
 
         <tr>
@@ -132,7 +132,11 @@
     </table>
 
     </div>
-
+    <nav id="datatablePagination" aria-label="Activity pagination">
+        <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+          (page)="onChangePage($event)" showFirstLastButtons>
+        </mat-paginator>
+      </nav>
 
 
    

@@ -28,12 +28,14 @@ import { CustomsClearanceComponent } from './categories/customs-clearance/custom
 import { ReportsComponent } from './categories/reports/reports.component';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import {MatSelectModule} from '@angular/material/select';
+import {MatPaginatorModule} from '@angular/material/paginator';
 
-import { CarouselModule } from 'primeng/carousel';
 import { LoadingInterceptor } from '../_interceptors/loading-interceptor';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
+import { SlickCarouselModule } from 'ngx-slick-carousel';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -70,7 +72,10 @@ import {MatMenuModule} from '@angular/material/menu';
     MatButtonModule,
     MatInputModule,
     MatSelectModule,
-    MatMenuModule
+    MatMenuModule,
+    SlickCarouselModule,
+    CarouselModule,
+    MatPaginatorModule
 
   ],
   providers: [

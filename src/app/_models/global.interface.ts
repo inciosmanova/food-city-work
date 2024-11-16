@@ -29,7 +29,7 @@ export interface TableRequestModel {
 
 export interface FilterModel {
   columnName: string;
-  filterType: string;
+  // filterType: string;
   value: string;
   order: number;
 }
@@ -253,6 +253,7 @@ export interface TerminalResult2 {
   ydm: string;
   scalesIndicator: number;
   createUser: string;
+  statusId:number
 }
 
 

@@ -207,3 +207,6 @@ th {
     }
     }
 }
+::ng-deep .mat-mdc-paginator-page-size{
+    display: none!important ;
+}

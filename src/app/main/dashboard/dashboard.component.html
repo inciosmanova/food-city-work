@@ -45,7 +45,7 @@
         <div class="table-container mt-3">
             <div class="table-header">
                 <h2>Günlük əməliyyatlar</h2>
-                <span>05.09.2024</span>
+                <span>{{date | date: 'dd.MM.yyyy' }}</span>
             </div>
 
             <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
@@ -73,11 +73,22 @@
                 <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
             </table>
+            <nav id="datatablePagination" aria-label="Activity pagination">
+                <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                  (page)="onChangePage($event)" showFirstLastButtons>
+                </mat-paginator>
+              </nav>
         </div>
 
-        <div class="slider">
-            
-        </div>
+        <!-- <div class="slider">
+            <div class="about-carousel-content">
+                <div id="about-carousel" class="owl-carousel owl-theme">
+                  <div class="item" *ngFor="let image of data; let i = index">
+                    <img [src]="image" [alt]="'about-us-image' + i">
+                  </div>
+                </div>
+              </div> 
+        </div> -->
         <div class="important_box">
             <div class="row">
                 <div class="col-6" *ngFor="let item of menu">

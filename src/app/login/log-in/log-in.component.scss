@@ -14,7 +14,7 @@ html, body {
 }
 
 header {
-    padding: 80px 30px 10px 30px;
+    padding: 40% 30px 10px 30px;
 
     .logo,
     h1 {
@@ -23,7 +23,7 @@ header {
 
     h1 {
         font-family: Inter;
-        font-size: 24px;
+        font-size: 29px;
         font-weight: 600;
         line-height: 35.28px;
         text-align: left;
@@ -58,4 +58,8 @@ form{
     input:focus{
         outline: none;
     }
+}
+.confirm_button{
+    padding: 15px 10px;
+    font-size: 20px;
 }

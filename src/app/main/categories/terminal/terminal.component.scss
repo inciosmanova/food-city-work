@@ -9,3 +9,6 @@
     display: none;
     /* Ripple efektini de kaldırmak isterseniz */
 }
+::ng-deep .mat-mdc-paginator-page-size{
+    display: none!important ;
+}

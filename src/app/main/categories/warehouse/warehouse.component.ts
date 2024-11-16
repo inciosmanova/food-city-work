@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { PageEvent } from '@angular/material/paginator';
 import {
   OperationRootResult,
   OperationRootResult2,
@@ -14,6 +15,9 @@ import { GlobalService } from 'src/app/_services/global.service';
   styleUrls: ['./warehouse.component.scss'],
 })
 export class WarehouseComponent implements OnInit {
+  length!: number
+  pageSize!: number;
+  pageSizeOptions: number[] = [10, 20, 50];
   requsetData: TableRequestModel = {
     currentPageName: '',
     exportToExcel: false,
@@ -34,6 +38,12 @@ resultBrowse: any;
     this.getAllWarehouseOperation(this.status)
 
   }
+  onChangePage(pe: PageEvent) {
+    this.requsetData.nextPageNumber = pe.pageIndex + 1
+    this.requsetData.visibleItemCount = pe.pageSize
+    this.getAllWarehouseOperation(this.status)
+  }
+
   createForm() {
     const oneWeekAgo = new Date();
     oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
@@ -50,6 +60,7 @@ resultBrowse: any;
     this.globalService
       .getAllWarehouseOperation(this.requsetData, status)
       .subscribe((res) => {
+        this.length = res.data.count
         this.statusResult = res.data.status.result;
         this.browseResult = res.data.browse.result;
       });

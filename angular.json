@@ -34,10 +34,15 @@
               "node_modules/slick-carousel/slick/slick-theme.css",
               "@angular/material/prebuilt-themes/indigo-pink.css",
              "src/assets/bootstrap-5.3.3-dist/css/bootstrap.min.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.css"
             ],
             "scripts": [
-              "src/assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js"
+              "src/assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js",
+                      "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/owl.carousel/dist/owl.carousel.min.js"
+              
             ]
           },
           "configurations": {
@@ -100,9 +105,20 @@
             ],
             "styles": [
               "@angular/material/prebuilt-themes/indigo-pink.css",
-              "src/styles.scss"
+              "src/styles.scss",
+              "node_modules/slick-carousel/slick/slick.css",
+              "node_modules/slick-carousel/slick/slick-theme.css",
+              "@angular/material/prebuilt-themes/indigo-pink.css",
+             "src/assets/bootstrap-5.3.3-dist/css/bootstrap.min.css",
+              "src/styles.scss",
+              "node_modules/owl.carousel/dist/assets/owl.carousel.css",
+              "node_modules/owl.carousel/dist/assets/owl.theme.default.css"
             ],
-            "scripts": []
+            "scripts": [
+              "src/assets/bootstrap-5.3.3-dist/js/bootstrap.bundle.min.js",
+              "node_modules/jquery/dist/jquery.min.js",
+      "node_modules/owl.carousel/dist/owl.carousel.min.js"
+            ]
           }
         }
       }

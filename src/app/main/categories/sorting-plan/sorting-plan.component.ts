@@ -4,6 +4,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { TableRequestModel, OrderResult, OrderResult2 } from 'src/app/_models/global.interface';
 import { GlobalService } from 'src/app/_services/global.service';
 import { ConfirmtextComponent } from '../../mmf/confirmtext/confirmtext.component';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-sorting-plan',
@@ -11,6 +12,9 @@ import { ConfirmtextComponent } from '../../mmf/confirmtext/confirmtext.componen
   styleUrls: ['./sorting-plan.component.scss']
 })
 export class SortingPlanComponent {
+  length!: number
+  pageSize!: number;
+  pageSizeOptions: number[] = [10, 20, 50];
   readonly dialog = inject(MatDialog);
   requsetData: TableRequestModel = {
     currentPageName: '',
@@ -47,6 +51,7 @@ status:number=0
     this.globalService
       .getAllOrdersBrowseMobile(this.requsetData,9, status)
       .subscribe((res) => {
+        this.length = res.data.browse.count
         this.statusResult = res.data.status.result;
         this.browseResult = res.data.browse.result;
       });
@@ -56,6 +61,12 @@ status:number=0
     this.requsetData.endDate = this.dateFilter.value.endDate;
     this.getAllOrdersBrowseMobile(this.status)
   }
+  onChangePage(pe: PageEvent) {
+    this.requsetData.nextPageNumber = pe.pageIndex + 1
+    this.requsetData.visibleItemCount = pe.pageSize
+    this.getAllOrdersBrowseMobile(this.status)
+  }
+
 
   openDialog(){
     const dialogRef = this.dialog.open(ConfirmtextComponent);

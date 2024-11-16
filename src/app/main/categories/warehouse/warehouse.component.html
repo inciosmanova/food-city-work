@@ -93,7 +93,11 @@
 
     </div>
 
-
+    <nav id="datatablePagination" aria-label="Activity pagination">
+        <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+          (page)="onChangePage($event)" showFirstLastButtons>
+        </mat-paginator>
+      </nav>
 
    
 </main>

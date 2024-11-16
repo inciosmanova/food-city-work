@@ -22,7 +22,7 @@
           <mat-label class="select-label">Sifariş tipi</mat-label>
           <mat-select class="select" formControlName='reasonType' id="reasonType" >
 
-            <mat-option *ngFor="let item of reasonType" (click)="selectType(item.key)" [value]="item">
+            <mat-option *ngFor="let item of reasonType" (click)="selectType(item.key)" [value]="item.key">
               {{item.value}}
             </mat-option>
           </mat-select>
@@ -33,14 +33,14 @@
 
 
     <div class="row mb-2" >
-        <div class="col-4" *ngFor="let item of statusWithCount" (click)="getAllInvoices(item.paymentStatusId)">
+        <div class="col-4 custom_colored_box" *ngFor="let item of statusWithCount" (click)="getAllInvoices(item.paymentStatusId || item.key)">
             <div 
             [ngClass]="{
-                'custom-card_green green_text': item.paymentStatusId === 1,
-                'custom-card_yellow yellow_text  ': item.paymentStatusId === 0,
-                'custom-card_red red_text': item.paymentStatusId === 2
+                        'custom-card_green green_text': item.paymentStatusId || item.key  === 1,
+                'custom-card_yellow yellow_text  ': item.paymentStatusId || item.key === 0,
+                'custom-card_red red_text': item.paymentStatusId || item.key === 2
               }">
-                <h1>{{item.status}}</h1>
+                <h1>{{item.status || item.value}}</h1>
                 <h1>{{item.count}}</h1>
             </div>      
         </div>
@@ -62,9 +62,9 @@
                 <td>
                     <h4 class="red_text header "
                     [ngClass]="{
-                        'green_text header_green': item.paymentStatusId === 1,
+                        'green_text header_green': item.paymentStatusId  === 1,
                         'yellow_text header_yellow': item.paymentStatusId === 0,
-                        'red_text header_': item.paymentStatusId === 2
+                        'red_text header_': item.paymentStatusId  === 2
                       }"
                     >{{item.paymentStatus}}</h4>
                 </td>
@@ -109,10 +109,14 @@
 
 
         </table>
-
+      
     </div>
 
-
+    <nav id="datatablePagination" aria-label="Activity pagination">
+            <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+              (page)="onChangePage($event)" showFirstLastButtons>
+            </mat-paginator>
+          </nav>  
 
    
 </main>

@@ -4,6 +4,7 @@ import { ConfirmtextComponent } from '../../mmf/confirmtext/confirmtext.componen
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { InvoicesPaymentStatus, InvoicesResult, InvoicesStatusWithCount, SubTypeRootData, TableRequestModel} from 'src/app/_models/global.interface';
 import { GlobalService } from 'src/app/_services/global.service';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-myinvoices',
@@ -12,6 +13,9 @@ import { GlobalService } from 'src/app/_services/global.service';
 })
 export class MyinvoicesComponent {
   readonly dialog = inject(MatDialog);
+  length!: number
+  pageSize!: number;
+  pageSizeOptions: number[] = [10, 20, 50];
   requsetData: TableRequestModel = {
     currentPageName: '',
     exportToExcel: false,
@@ -24,7 +28,7 @@ export class MyinvoicesComponent {
   dateFilter!: FormGroup;
   statusResult: InvoicesPaymentStatus[] = [];
   browseResult: InvoicesResult[] = [];
-  statusWithCount: InvoicesStatusWithCount[] = [];
+  statusWithCount: InvoicesStatusWithCount[] | any = [];
 
 reasonType:SubTypeRootData[]=[]
 status:number=0
@@ -48,20 +52,21 @@ status:number=0
   }
   getAllInvoices(status:any,reasonType?:any ) {
     this.status=status
-    // this.requsetData.filters?.push({
-    //   columnName: 'paymentStatusId',
-    //   value: status,
-    //   order: 0,
-    //   filterType: ''
-    // });
+this.requsetData.filters[0] = {   
+     "columnName": 'paymentStatusId',
+      "value": String(status),
+      "order": 0,
+    };
+    // [{"columnName":"paymentStatusId","value":"1","order":0}]
     reasonType ?this.dateFilter.value.reasonType=reasonType :''
     this.globalService
       .getAllInvoices(this.requsetData , 0, this.dateFilter.value.reasonType)
       .subscribe((res) => {
+        this.length = res.data.browse.count
         this.statusResult = res.data.paymentStatuses;
-        this.statusWithCount = res.data.statusWithCount;
+        ;
         this.browseResult = res.data.browse.result;
-        this.statusWithCount.filter
+        res.data.statusWithCount.length>0 ?this.statusWithCount = res.data.statusWithCount:this.statusWithCount = res.data.paymentStatuses
       });
   }
   onDateRangeChange(){
@@ -69,6 +74,12 @@ status:number=0
     this.requsetData.endDate = this.dateFilter.value.endDate;
     this.getAllInvoices( this.status)
   }
+  onChangePage(pe: PageEvent) {
+    this.requsetData.nextPageNumber = pe.pageIndex + 1
+    this.requsetData.visibleItemCount = pe.pageSize
+    this.getAllInvoices(this.status)
+  }
+
   openDialog(){
     const dialogRef = this.dialog.open(ConfirmtextComponent);
 

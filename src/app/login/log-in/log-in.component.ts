@@ -50,6 +50,7 @@ export class LogInComponent implements OnInit{
       this.loginService.login(this.form.value).subscribe({
         next: (result: any) => {
           let tokenData=this.getDecodedAccessToken(result.data.token.toString());
+          console.log(tokenData)
           localStorage.setItem('token', result.data.token);
           localStorage.setItem('refreshToken', result.data.refreshToken);
           this.router.navigate(['/modules/main/dashboard'])

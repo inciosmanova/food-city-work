@@ -72,49 +72,49 @@
             <img src="../../../assets/images/icon/{{item.icon}}" alt="">
             <h3>{{item.value}}</h3>
         </div>
-        <div class="info" *ngIf="item.subObject" >
+        <div class="info_category" *ngIf="item.subObject" >
             <table >
            
                 <tr *ngIf="item.subObject?.companyName">
-                  <td>HypoCaust</td>
+                  <td class="w-90">HypoCaust</td>
                   <td>{{item.subObject?.companyName}}</td>
                 </tr>
                 <tr *ngIf="item.subObject?.cif">
-                  <td>CIF</td>
+                  <td class="w-90">CIF</td>
                   <td>{{item.subObject?.cif}}</td>
                 </tr>
                 <tr *ngIf="item.subObject?.totalInvoiceCount">
-                  <td>Ümumi faktura sayı</td>
+                  <td class="w-90">Ümumi faktura sayı</td>
                   <td>{{item.subObject?.totalInvoiceCount}}</td>
                 </tr>
                 <tr *ngIf="item.subObject?.totalUnPaidAmount">
-                    <td>Ümumi faktura borcu</td>
+                    <td class="w-90">Ümumi faktura borcu</td>
                     <td>{{item.subObject?.totalUnPaidAmount}}</td>
                   </tr>
 
                   <tr *ngIf="item.subObject?.total">
-                    <td>Ümumi müqavilə sayı</td>
+                    <td class="w-90">Ümumi müqavilə sayı</td>
                     <td>{{item.subObject?.total}}</td>
                   </tr>
                   <tr *ngIf="item.subObject?.active">
-                    <td>Aktiv müqavilə sayı</td>
+                    <td class="w-90">Aktiv müqavilə sayı</td>
                     <td>{{item.subObject?.active}}</td>
                           </tr>
                   <tr *ngIf="item.subObject?.deactive">
-                      <td>Bitmiş müqavilə</td>
+                      <td class="w-90">Bitmiş müqavilə</td>
                       <td>{{item.subObject?.deactive}}</td>
 
 
                       <tr *ngIf="item.subObject?.total">
-                        <td>Ümumi sifariş sayı</td>
+                        <td class="w-90">Ümumi sifariş sayı</td>
                         <td>{{item.subObject?.total}}</td>
                       </tr>
                       <tr *ngIf="item.subObject?.approve">
-                        <td>İcra edilmiş sifariş sayı</td>
+                        <td class="w-90">İcra edilmiş sifariş sayı</td>
                         <td>{{item.subObject?.approve}}</td>
                       </tr>
                       <tr *ngIf="item.subObject?.decline">
-                          <td>İmtina edilmiş müraciət sayı</td>
+                          <td class="w-90">İmtina edilmiş müraciət sayı</td>
                           <td>{{item.subObject?.decline}}</td>
                         </tr>
               </table>
