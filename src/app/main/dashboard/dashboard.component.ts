@@ -2,7 +2,7 @@ import { Component, NgZone, OnInit } from '@angular/core';
 import { PageEvent } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import {  Router } from '@angular/router';
-import { DailyRootResult, GetMenuData, TableRequestModel } from 'src/app/_models/global.interface';
+import { CompanyFormData, DailyRootResult, GetMenuData, TableRequestModel } from 'src/app/_models/global.interface';
 import { GlobalService } from 'src/app/_services/global.service';
 import { LoginService } from 'src/app/_services/login-service.service';
 declare var $: any; // jQuery'nin tanımlanması
@@ -16,6 +16,9 @@ declare var $: any; // jQuery'nin tanımlanması
 export class DashboardComponent implements OnInit {
   length!: number
   pageSize!: number;
+  companyData: CompanyFormData[] = [];
+  companyName:string=''
+
   pageSizeOptions: number[] = [10, 20, 50];
    requsetData:TableRequestModel={
     currentPageName: '',
@@ -46,8 +49,15 @@ date:Date =new Date()
       this.getMenu()
       this.getTable()
       this.getAboutData()
+      this.getCompanyData()
   }
+  getCompanyData() {
+    this.globalService.getCompanyData().subscribe((res) => {
+      this.companyData = res.data;
+      this.companyName=res.data[0]?.name
 
+    });
+  }
 
   getAboutData(){
     this.aboutData = ['a','b','c']

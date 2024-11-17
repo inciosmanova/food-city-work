@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
   checkDeviceType() {
     // Pencere genişliğine göre cihazı kontrol et
     if (window.innerWidth > 1024) {
-      alert('Bu uygulama sadece mobil cihazlarda kullanılabilir.');
+      alert('Bu tətbiq yalnız mobil cihazlarda istifadə oluna bilər.');
       this.location.back();
       
     } else {

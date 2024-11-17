@@ -12,6 +12,7 @@ import { jwtDecode } from "jwt-decode";
 })
 export class LogInComponent implements OnInit{
   form!:FormGroup
+  message:string=''
   constructor(
     private router: Router,
     private fb:FormBuilder,
@@ -49,15 +50,20 @@ export class LogInComponent implements OnInit{
     if(this.form.valid){
       this.loginService.login(this.form.value).subscribe({
         next: (result: any) => {
-          let tokenData=this.getDecodedAccessToken(result.data.token.toString());
-          console.log(tokenData)
-          localStorage.setItem('token', result.data.token);
-          localStorage.setItem('refreshToken', result.data.refreshToken);
-          this.router.navigate(['/modules/main/dashboard'])
+          if(result.statusCode!==2003){
+            let tokenData=this.getDecodedAccessToken(result.data.token.toString());
+            console.log(tokenData)
+            localStorage.setItem('token', result.data.token);
+            localStorage.setItem('refreshToken', result.data.refreshToken);
+            this.router.navigate(['/modules/main/dashboard'])
+          }else{
+            this.alertService.errorService(result.message)
 
+          }
+        
         },
         error: (res: any) => {
-        this.alertService.errorService('İstifadəçi adı və ya şifrə yanlışdır .')
+        this.alertService.errorService(res.message)
         }
       })
     }

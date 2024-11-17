@@ -1,4 +1,5 @@
 export const environment = {
-    production: true,
-    apiUrl: 'https://your-production-api.com/api', // Üretim ortamı için API URL'si
-  };
+  production: true,
+  authUrl: 'http://10.124.102.29:2021/api/mobile/', 
+  globalUrl: 'http://10.124.102.29:2021/api/mobile/Global/', 
+};

@@ -14,7 +14,7 @@ html, body {
 }
 
 header {
-    padding: 40% 30px 10px 30px;
+    padding: 50% 30px 40px 30px;
 
     .logo,
     h1 {
@@ -41,6 +41,7 @@ main {
     flex-direction: column; /* Dikey yönde düzenleme */
     justify-content: space-between; /* İçeriği en üst ve en alt kısımda yerleştir */
     overflow: auto; /* Taşan içeriği kaydırılabilir yap */
+    
 }
 
 .form-floating {
