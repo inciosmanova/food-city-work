@@ -23,9 +23,9 @@
         <div class="col-4 custom_colored_box" *ngFor="let item of statusResult" (click)="getAllOrdersBrowseMobile(item.id)">
             <div 
             [ngClass]="{
-                'custom-card_green green_text': item.id === 4 || item.id === 5,
-                'custom-card_yellow yellow_text  ': item.id === 3,
-                'custom-card_red red_text': item.id === 6 ||  item.id === 2 ||item.id === 1,
+                'custom-card_green green_text': item.id === 1,
+                'custom-card_yellow yellow_text  ': item.id === 2,
+                'custom-card_red red_text': item.id === 3,
               }">
                 <h1>{{item.value}}</h1>
                 <h1>{{item.count}}</h1>

@@ -23,9 +23,9 @@
         <div class="col-4 custom_colored_box" *ngFor="let item of statusResult" (click)="getAllOrdersBrowseMobile(item.id)">
             <div 
             [ngClass]="{
-                'custom-card_green green_text': item.id === 4 || item.id === 5,
-                'custom-card_yellow yellow_text  ': item.id === 3,
-                'custom-card_red red_text': item.id === 6 ||  item.id === 2 ||item.id === 1,
+                'custom-card_green green_text': item.id === 1,
+                'custom-card_yellow yellow_text  ': item.id === 2,
+                'custom-card_red red_text': item.id === 3,
               }">
                 <h1>{{item.value}}</h1>
                 <h1>{{item.count}}</h1>
@@ -37,9 +37,9 @@
     </div>
 
     <div      [ngClass]="{
-        'table_list_green info_green custom-card_green': item.statusId === 4 || item.statusId === 5,
-        'table_list_yellow info_yellow custom-card_yellow m-0': item.statusId === 3,
-        'table_list_red info_red custom-card_red m-0': item.statusId === 6 ||  item.statusId === 2 ||item.statusId === 1,
+        'table_list_green info_green custom-card_green': item.statusId === 1,
+        'table_list_yellow info_yellow custom-card_yellow m-0': item.statusId === 2,
+        'table_list_red info_red custom-card_red m-0': item.statusId === 3,
       }"
     *ngFor="let item of browseResult"
     >

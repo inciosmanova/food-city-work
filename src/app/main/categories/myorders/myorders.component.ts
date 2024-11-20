@@ -47,7 +47,7 @@ status:number=0
     this.requsetData.endDate = this.dateFilter.value.endDate;
   }
   getAllOrdersBrowseMobile(status: number) {
-    debugger
+    
     this.status=status
     this.globalService
       .getAllOrdersBrowseMobile(this.requsetData,1, status)

@@ -24,8 +24,8 @@
             <div 
             [ngClass]="{
                 'custom-card_green green_text': item.id === 1,
-                'custom-card_yellow yellow_text  ': item.id === 0,
-                'custom-card_red red_text': item.id === -1
+                'custom-card_yellow yellow_text  ': item.id === 0 || item.id === 2,
+                'custom-card_red red_text': item.id === -1|| item.id === 3
               }">
                 <h1>{{item.value}}</h1>
                 <h1>{{item.count}}</h1>
