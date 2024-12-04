@@ -35,6 +35,7 @@ export class DashboardComponent implements OnInit {
   initialized = false;
   data:any
   galeryData:any
+  invoice:any
   displayedColumns: string[] = [  'docNo',  'date', 'operationType'];
   dataSource = new MatTableDataSource<any>(this.ELEMENT_DATA);
   menu:GetMenuData[]=[]
@@ -116,6 +117,8 @@ date:Date =new Date()
     this.globalService.getMenus().subscribe(
       res=>{
         const targetIds = [1162, 1163, 1164, 1165];
+        
+        this.invoice=res.data.filter(item => item.id==1167)[0]
 
 // İstenilen id değerlerine sahip olanları filtrele
 this.menu  = res.data.filter(item => targetIds.includes(item.id));

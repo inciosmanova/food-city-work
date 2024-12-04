@@ -1,117 +1,139 @@
-<ngx-spinner class="spinner"  bdOpacity = 0.1 size = "medium" color = "#6E7A78" type = "ball-circus" [fullScreen] = "true"></ngx-spinner>
+<ngx-spinner
+  class="spinner"
+  bdOpacity="0.1"
+  size="medium"
+  color="#6E7A78"
+  type="ball-circus"
+  [fullScreen]="true"
+></ngx-spinner>
 
 <h1 class="header_text">Çeşidləmə əməliyyatlarım</h1>
 <main>
+  <mat-form-field class="w-100" [formGroup]="dateFilter">
+    <mat-date-range-input [rangePicker]="picker">
+      <input
+        matStartDate
+        placeholder="Start date"
+        formControlName="beginDate"
+      />
+      <input matEndDate placeholder="End date" formControlName="endDate" />
+    </mat-date-range-input>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker>
+      <mat-date-range-picker-actions>
+        <button mat-button matDateRangePickerCancel>Ləğv et</button>
+        <button
+          mat-raised-button
+          matDateRangePickerApply
+          (click)="onDateRangeChange()"
+        >
+          Axtar
+        </button>
+      </mat-date-range-picker-actions>
+    </mat-date-range-picker>
+  </mat-form-field>
 
-    <mat-form-field class="w-100"  [formGroup]="dateFilter">
-        <mat-date-range-input [rangePicker]="picker" >
-            <input matStartDate placeholder="Start date" formControlName="beginDate">
-            <input matEndDate placeholder="End date" formControlName="endDate">
-        </mat-date-range-input>
-        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-        <mat-date-range-picker #picker>
-            <mat-date-range-picker-actions>
-                <button mat-button matDateRangePickerCancel>Cancel</button>
-                <button mat-raised-button matDateRangePickerApply (click)="onDateRangeChange()">Apply</button>
-              </mat-date-range-picker-actions>
-        </mat-date-range-picker>
-        
-    </mat-form-field>
-
-
-    <div class="row mb-2" >
-        <div class="col-4 custom_colored_box" *ngFor="let item of statusResult" (click)="getAllOrdersBrowseMobile(item.id)">
-            <div 
-            [ngClass]="{
+  <div class="row mb-2">
+    <div
+      class="col-4 custom_colored_box"
+      *ngFor="let item of statusResult"
+      (click)="getAllOrdersBrowseMobile(item.id)"
+    >
+      <div
+        [ngClass]="{
                 'custom-card_green green_text': item.id === 1,
                 'custom-card_yellow yellow_text  ': item.id === 2,
                 'custom-card_red red_text': item.id === 3,
-              }">
-                <h1>{{item.value}}</h1>
-                <h1>{{item.count}}</h1>
-            </div>      
-        </div>
-     
-         
-  
+              }"
+      >
+        <h1>{{ item.value }}</h1>
+        <h1>{{ item.count }}</h1>
+      </div>
     </div>
+  </div>
 
-    <div      [ngClass]="{
+  <div
+    [ngClass]="{
         'table_list_green info_green custom-card_green': item.statusId === 1,
         'table_list_yellow info_yellow custom-card_yellow m-0': item.statusId === 2,
         'table_list_red info_red custom-card_red m-0': item.statusId === 3,
       }"
     *ngFor="let item of browseResult"
-    >
-        <table>
+  >
+    <table>
+      <tr>
+        <td class="head">{{ item.orderNo }}</td>
+        <td colspan="2">
+          <!-- <h4 class="green_text header d-flex">İcra edilib</h4> -->
+        </td>
+      </tr>
 
-            <tr>
-                <td class="head">{{item.warehouseDocNo}}</td>
-                <td colspan="2">
-                    <!-- <h4 class="green_text header d-flex">İcra edilib</h4> -->
-                </td>
-            </tr>
-       
-       
+      <tr>
+        <td>Müqavilə növü</td>
+        <td colspan="2">{{item.contractType}}</td>
+      
+      </tr>
 
+      <tr>
+        <td>Sifariş № 1</td>
+        <td>{{ item.orderType }}</td>
+        <td>{{ item.warehouseDocNo }}</td>
+      </tr>
+      <tr>
+        <td>Başlanma tarixi</td>
+        <td colspan="2">{{ item.date }}</td>
+      </tr>
 
-            <tr>
-                <td>Sifariş № 1 </td>
-                <td>{{item.orderType}}</td>
-                <td>{{item.orderNo}}</td>
-            </tr>
-            <tr>
-                <td>Başlanma tarixi</td>
-                <td colspan="2">{{item.date}}</td>
+      <tr>
+        <td>İcra tarixi</td>
+        <td colspan="2">{{ item.plannedExecutionDate }}</td>
+      </tr>
 
-            </tr>
-
-            <tr>
-                <td>İcra tarixi</td>
-                <td colspan="2">{{item.plannedExecutionDate}}</td>
-
-            </tr>
-
-
-         
-
-
-        
-
-            <tr>
-                <td>NV № </td>
-                <td colspan="2">{{item.truckplate}}</td>
-
-            </tr>
+      <tr>
+        <td>Məhsul</td>
+        <td colspan="2">{{item.product}}</td>
+      </tr>
 
 
-            
-            <tr>
-                <td>Kamera</td>
-                <td colspan="2">{{item.warehouseDoorName}}</td>
+      <!-- <tr>
+        <td>BİN</td>
+        <td colspan="2"></td>
+      </tr> -->
+      <tr>
+        <td>NV №</td>
+        <td colspan="2">{{ item.truckplate }}</td>
+      </tr>
 
-            </tr>
-            <!-- <tr>
+      <tr>
+        <td>Çəki</td>
+        <td colspan="2">{{ item.cargoWeight }}</td>
+      </tr>
+
+      <tr>
+        <td>Səlahiyyətli nümayəndə</td>
+        <td colspan="2">{{ item.plenipotentiary }}</td>
+      </tr>
+
+      <tr>
+        <td>Kamera</td>
+        <td colspan="2">{{ item.warehouseName }}</td>
+      </tr>
+      <!-- <tr>
                 <td>Məhsul</td>
                 <td>Nektarin</td>
                 <td></td>
             </tr> -->
+    </table>
+  </div>
 
-
-          
-         
-
-
-        </table>
-       
-
-    </div>
-
-
-    <nav id="datatablePagination" aria-label="Activity pagination">
-        <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
-          (page)="onChangePage($event)" showFirstLastButtons>
-        </mat-paginator>
-      </nav>
-
+  <nav id="datatablePagination" aria-label="Activity pagination">
+    <mat-paginator
+      [length]="length"
+      [pageSize]="pageSize"
+      [pageSizeOptions]="pageSizeOptions"
+      (page)="onChangePage($event)"
+      showFirstLastButtons
+    >
+    </mat-paginator>
+  </nav>
 </main>

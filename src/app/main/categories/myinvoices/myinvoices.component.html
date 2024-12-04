@@ -36,9 +36,9 @@
         <div class="col-4 custom_colored_box" *ngFor="let item of statusWithCount" (click)="getAllInvoices(item.paymentStatusId || item.key)">
             <div 
             [ngClass]="{
-                        'custom-card_green green_text': item.paymentStatusId || item.key  === 1,
-                'custom-card_yellow yellow_text  ': item.paymentStatusId || item.key === 0,
-                'custom-card_red red_text': item.paymentStatusId || item.key === 2
+                        'custom-card_green green_text': item.paymentStatusId === 1 || item.key  === 1,
+                'custom-card_yellow yellow_text  ': item.paymentStatusId === 0 || item.key === 0,
+                'custom-card_red red_text': item.paymentStatusId === 2 || item.key === 2
               }">
                 <h1>{{item.status || item.value}}</h1>
                 <h1>{{item.count}}</h1>

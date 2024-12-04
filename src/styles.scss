@@ -381,7 +381,17 @@ h1{
 
     }
   }
-  .table_list, .table_list_green , .table_list_green , .table_list_yellow{
+  .table_list, .table_list_green, .table_list_red, .table_list_yellow{
+    padding: 5px;
+    width: 95%;
+    margin-bottom: 5px;
+
+    h1 {
+      font-size: 16px !important;
+
+    }
+  }
+  .table_list_yellow{
     padding: 5px;
     width: 95%;
     margin-bottom: 5px;

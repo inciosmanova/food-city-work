@@ -64,6 +64,8 @@ export interface OperationRootBrowse {
 }
 
 export interface OperationRootResult2 {
+orderType: any;
+cargoName: any;
   id: number;
   docNo: string;
   contractType: string;
@@ -132,6 +134,7 @@ export interface ContractRoot {
 }
 
 export interface ContractRootData {
+status: any;
   id: number;
   contractType: string;
   beginDate: string;
@@ -288,6 +291,10 @@ export interface OrderBrowse {
 }
 
 export interface OrderResult2 {
+contractType: any;
+product: any;
+cargoWeight: any;
+plenipotentiary: any;
 docNo: any;
   id: number
   date: string

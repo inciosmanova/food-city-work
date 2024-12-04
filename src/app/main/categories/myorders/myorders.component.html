@@ -37,9 +37,9 @@
     </div>
 
     <div      [ngClass]="{
-        'table_list_green info_green custom-card_green': item.statusId === 4 || item.statusId === 5,
-        'table_list_yellow info_yellow custom-card_yellow': item.statusId === 3,
-        'table_list_red info_red custom-card_red ': item.statusId === 6 ||  item.statusId === 2 ||item.statusId === 1,
+        'table_list_green info_green custom-card_green': item.statusId === 1,
+        'table_list_yellow info_yellow custom-card_yellow': item.statusId === 2,
+        'table_list_red info_red custom-card_red ': item.statusId === 3,
       }"
     *ngFor="let item of browseResult"
     >

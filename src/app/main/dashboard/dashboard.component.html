@@ -14,10 +14,8 @@
             </div>
             <div class="col-3 d-flex justify-content-end">
                 
-                <button mat-button [matMenuTriggerFor]="menuItem"><img src="../../../assets/images/icon/notification.svg" alt=""></button>
-<mat-menu #menuItem="matMenu">
-  <button mat-menu-item class="text-center" (click)="logOut()">Log out</button>
-</mat-menu>
+                <button mat-button ><img src="../../../assets/images/icon/notification.svg" alt=""></button>
+
             </div>
         </div>
     </header>
@@ -26,17 +24,17 @@
             <div class="top_box d-flex justify-content-start align-items-center px-3">
                 <div class="">
                     <h1>Ödəniş gözləyən <br>fakturalar</h1>
-                    <button class="confirm_button">Ödəniş et</button>
+                    <!-- <button class="confirm_button">Ödəniş et</button> -->
                 </div>
 
             </div>
             <div class="bottom_box px-5 pt-3">
                 <span>
-                    <h2>12</h2>
+                    <h2>{{invoice?.subObject?.totalInvoiceCount}}</h2>
                     <p>faktura sayı</p>
                 </span>
                 <span>
-                    <h2>345₼</h2>
+                    <h2>{{invoice?.subObject?.totalUnPaidAmount}}₼</h2>
                     <p>ödənilməli məbləğ</p>
                 </span>
             </div>

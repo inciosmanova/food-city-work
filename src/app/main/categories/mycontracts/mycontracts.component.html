@@ -8,7 +8,15 @@
        
         <tr>
           <td class="head">CO24-00415</td>
-          <td> <h4  class="circle_text header d-flex"><span class="red_circle"></span> Stoplanmış</h4></td>
+          <td> <h4  class="circle_text header d-flex justify-content-end">
+            <span
+            [ngClass]="{
+              'red_circle': item.status  === 'Stoplanmış',
+              'green_circle': item.status === 'Aktiv',
+            }"
+          ></span>
+             {{item.status}}</h4>
+          </td>
         </tr>
         <tr>
           <td>Növü</td>
