@@ -1,0 +1,411 @@
+<div class="addbox">
+  <div class="row">
+    <div class="col-8 hdr1">
+      <h1 class="header_text">
+        Müştəri müraciət forması
+      </h1>
+      </div>
+    <div class="col-4 hdr2">
+      <h2 class="header_text">{{this.form.value.docNo}}</h2>
+    </div>
+  </div>
+
+  <form action="" [formGroup]="form">
+    <div class="row">
+      <div class="col-6">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control custom-input "
+            id="companyName"
+            placeholder="companyName"
+            formControlName="companyName" readonly
+          />
+          <label for="companyName">Müştəri</label>
+        </div>
+      </div>
+      <div class="col-6">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control custom-input"
+            id="fullName"
+            placeholder="fullName"
+            formControlName="fullName" readonly
+          />
+          <label for="fullName">Sifarişçi</label>
+        </div>
+      </div>
+
+
+      
+      <div class="col-6">
+
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Müqavilə No</mat-label>
+          <mat-select
+            class="select"
+            formControlName="contractId"
+            id="contractId"
+          >
+            <mat-option
+              *ngFor="let item of contracts"
+              (click)="selectType(item.key,'contract')"
+              [value]="item.key"
+            >
+              {{ item.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+
+      <div class="col-6">
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Müqavilə növü</mat-label>
+          <mat-select
+            class="select"
+            formControlName="servicegroupId"
+            id="servicegroupId"
+          >
+            <mat-option
+              *ngFor="let item of servicegroups"
+              [value]="item.serviceGroupId"
+            >
+              {{ item.serviceGroupName}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+    
+      </div>
+
+
+      <div class="col-12">
+        <div formArrayName="services">
+          <div
+            *ngFor="let item of items.controls; let i = index"
+            [formGroupName]="i" [ngStyle]="{ 'display': this.form.value.services[i].status ? 'block' : 'none' }"
+          >
+            <div class="row" >
+              <div class="col-9">
+                <mat-form-field class="select-field w-100" appearance="fill">
+                  <mat-label class="select-label">Xidmet</mat-label>
+                  <mat-select
+                    class="select"
+                    formControlName="serviceId"
+                    id="serviceId"
+                  >
+                    <mat-option
+                      *ngFor="let item of services"
+                   
+                      [value]="item.serviceId"
+                    >
+                      {{ item.serviceName }}
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+              </div>
+              <div class="col-3">
+                <button
+                  type="button"
+                  class="confirm_button red_button w-100"
+                  (click)="removeItem(i)"
+                >
+                  Sil
+                </button>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="text-end">
+          <button type="button" class="confirm_button w-50 mb-2" (click)="addItem()">
+            Əlavə et
+          </button>
+        </div>
+      </div>
+
+      <!-- <div class="col-6">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control custom-input"
+            id="contractId"
+            placeholder="contractId"
+            formControlName="contractId"
+          />
+          <label for="contractId">Şərtlərə bax</label>
+        </div>
+      </div> -->
+
+      
+
+
+      <div class="col-6">
+        <div class="form-floating mb-3">
+          <input
+            type="date"
+            class="form-control custom-input"
+            id="executionDate"
+            placeholder="executionDate"
+            formControlName="executionDate"
+          />
+          <label for="executionDate">İcra tarixi</label>
+        </div>
+      </div>
+
+
+      <div class="col-6">
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Sifariş tipi</mat-label>
+          <mat-select
+            class="select"
+            formControlName="orderSubOperationTypeId"
+            id="orderSubOperationTypeId"
+          >
+            <mat-option
+              *ngFor="let item of contractOrders"
+           
+              [value]="item.subOperationTypeId"
+            >
+              {{ item.subOperationTypeName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+
+
+      <div class="col-6">
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Sifariş No</mat-label>
+          <mat-select
+            class="select"
+            formControlName="orderId"
+            id="orderId"
+          >
+            <mat-option
+              *ngFor="let item of contractOrders"
+           
+              [value]="item.orderId"
+            >
+              {{ item.orderNo }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+      
+      </div>
+
+      <div class="col-6">
+
+        
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Məhsul</mat-label>
+          <mat-select
+            class="select"
+            formControlName="cargoId"
+            id="cargoId"
+          >
+            <mat-option
+              *ngFor="let item of services"
+           
+              [value]="item.cargoId"
+            >
+              {{ item.cargoName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+      <div class="col-6">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control custom-input"
+            id="quantity"
+            placeholder="quantity"
+            formControlName="quantity"
+          />
+          <label for="quantity">Miqdar</label>
+        </div>
+      </div>
+
+
+
+      
+      <div class="col-6">
+
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Qəbul forması</mat-label>
+          <mat-select
+            class="select"
+            formControlName="packTypeId"
+            id="packTypeId"
+          >
+            <mat-option
+              *ngFor="let item of packTypes"
+           
+              [value]="item.id"
+            >
+              {{ item.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+</div>
+       
+
+
+      
+      <div class="col-6">
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Anbar</mat-label>
+          <mat-select
+            class="select"
+            formControlName="warehouseId"
+            id="warehouseId"
+          >
+            <mat-option
+              *ngFor="let item of contractWarehouses"
+              (click)="selectType(item.warehouseId,'warehouse')"
+              [value]="item.warehouseId"
+            >
+              {{ item.warehouseName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+       
+      </div>
+      <div class="col-6">
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Kamera</mat-label>
+          <mat-select
+            class="select"
+            formControlName="warehouseCameraId"
+            id="warehouseCameraId"
+          >
+            <mat-option
+              *ngFor="let item of contractWarehouses"
+           
+              [value]="item.warehouseCameraId"
+            >
+              {{ item.warehouseCameraName }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+
+      </div>
+
+
+      <div class="col-6">
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Daşıma tipi</mat-label>
+          <mat-select
+            class="select"
+            formControlName="transportType"
+            id="transportType"
+          >
+            <mat-option
+              *ngFor="let item of vehicles"
+           
+              [value]="item.key"
+            >
+              {{ item.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+      </div>
+
+      <div class="col-6">
+        <div class="form-floating mb-3">
+          <input
+            type="text"
+            class="form-control custom-input"
+            id="truckPlateNo"
+            placeholder="truckPlateNo"
+            formControlName="truckPlateNo"
+          />
+          <label for="truckPlateNo">Daşıyıcının No</label>
+        </div>
+      </div>
+
+      <div class="col-6">
+
+        <mat-form-field class="select-field w-100" appearance="fill">
+          <mat-label class="select-label">Qapı</mat-label>
+          <mat-select
+            class="select"
+            formControlName="warehouseDoorId"
+            id="warehouseDoorId"
+          >
+            <mat-option
+              *ngFor="let item of warehouseDoors"
+           
+              [value]="item.key"
+            >
+              {{ item.value }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+
+
+      </div>
+
+
+      <div class="col-6">
+        <div class="form-floating mb-3">
+          <textarea
+            type="textarea"
+            class="form-control custom-input"
+            id="description"
+            placeholder="description"
+            formControlName="description"
+          ></textarea>
+          <label for="description">Səbəb</label>
+        </div>
+      </div>
+
+      <!-- <div class="col-6">
+        <div class="form-floating mb-3">
+          <textarea
+            type="textarea"
+            class="form-control custom-input"
+            id="paymentDescription"
+            placeholder="paymentDescription"
+            formControlName="paymentDescription"
+          ></textarea>
+          <label for="paymentDescription">Müraciəti</label>
+        </div>
+      </div> -->
+      <div class="col-6  pb-2">
+        <button (click)="back()"  class="confirm_button transparant_button w-100">Geri</button>
+      </div>
+      <div class="col-6 text-end pb-2">
+        <button (click)="submit()"  class="confirm_button w-100">Təsdiq et</button>
+      </div>
+    </div>
+  </form>
+</div>

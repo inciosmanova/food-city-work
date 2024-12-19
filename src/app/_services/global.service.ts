@@ -28,6 +28,14 @@ export class GlobalService {
     return this.http.post<OperationRootData>(this.baseUrl + `GetAllWarehouseOperation?status=${status}`,filter )
   }
 
+  getCompanyApplicationBrowseData(filter : any,status:number): Observable<any> {
+    return this.http.post<any>(this.baseUrl + `GetCompanyApplicationBrowseData?status=${status}`,filter )
+  }
+
+  addOrUpdateCompanyApplication(value : any): Observable<any> {
+    return this.http.post<any>(this.baseUrl + `AddOrUpdateCompanyApplication`,value )
+  }
+
   getAllWarehouseOperationDaily(filter : TableRequestModel): Observable<DailyRoot> {
     return this.http.post<DailyRoot>(this.baseUrl + `GetAllWarehouseOperationDaily`,filter)
   }
@@ -35,7 +43,14 @@ export class GlobalService {
   getCompanyData(): Observable<CompanyForm> {
     return this.http.get<CompanyForm>(this.baseUrl + `GetCompanyData`)
   }
+  
+  getTransportTypes(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `GetTransportTypes`)
+  }
 
+  getPackTypes(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `GetPackTypes`)
+  }
   getContractByCompany(): Observable<ContractRoot> {
     return this.http.get<ContractRoot>(this.baseUrl + `GetContractByCompany`)
   }
@@ -53,5 +68,20 @@ export class GlobalService {
 
   getSpeCodeByType(type:string): Observable<SubTypeRoot> {
     return this.http.get<SubTypeRoot>(this.baseUrl + `GetSpeCodeByType?type=${type}`)
+  }
+  getCompanyApplicationById(id:string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `getCompanyApplicationById/${id}`)
+  }
+
+  getContractById(id:number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `getContractById/${id}`)
+  }
+
+  getContractsWithOrdersByCompany(): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `GetContractsWithOrdersByCompany `)
+  }
+
+  getWarehouseDoor(id:number,gateType:number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `GetWarehouseDoor/${id}?gateType=${gateType} `)
   }
 }

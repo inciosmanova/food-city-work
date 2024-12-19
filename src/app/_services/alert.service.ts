@@ -15,6 +15,15 @@ export class AlertService {
   constructor() {
   }
 
+
+   succesService(text:string){
+    Swal.fire({
+        icon: "success",
+        title: "",
+        text: text,
+      });
+  }
+
   errorService(text:string){
     Swal.fire({
         icon: "error",
@@ -22,6 +31,9 @@ export class AlertService {
         text: text,
       });
   }
+
+
+
 
 
 }

@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 
 import { MainRoutingModule } from './main-routing.module';
 import { MainComponent } from './main.component';
@@ -36,6 +36,7 @@ import { MatButtonModule } from '@angular/material/button';
 import {MatMenuModule} from '@angular/material/menu';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NewMmfComponent } from './mmf/new-mmf/new-mmf.component';
 
 @NgModule({
   declarations: [
@@ -54,6 +55,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     SortingPlanComponent,
     CustomsClearanceComponent,
     ReportsComponent,
+    NewMmfComponent,
 
   ],
   imports: [
@@ -79,7 +81,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 
   ],
   providers: [
-
+    DatePipe ,
     
     {
       provide: HTTP_INTERCEPTORS,

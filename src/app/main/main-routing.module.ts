@@ -15,6 +15,7 @@ import { TerminalComponent } from './categories/terminal/terminal.component';
 import { SortingPlanComponent } from './categories/sorting-plan/sorting-plan.component';
 import { CustomsClearanceComponent } from './categories/customs-clearance/customs-clearance.component';
 import { ReportsComponent } from './categories/reports/reports.component';
+import { NewMmfComponent } from './mmf/new-mmf/new-mmf.component';
 
 const routes: Routes = [
   { path: 'modules/main', redirectTo: 'dashboard', pathMatch: 'full' },
@@ -30,6 +31,7 @@ const routes: Routes = [
   { path: 'categories/order', component: MyordersComponent, canActivate: [LoginGuard]},
   { path: 'categories/report', component: ReportsComponent, canActivate: [LoginGuard]},
   { path: 'mmf', component: MmfComponent, canActivate: [LoginGuard]},
+  { path: 'mmf/add-mmf', component: NewMmfComponent, canActivate: [LoginGuard]},
   { path: 'profile', component: ProfileComponent, canActivate: [LoginGuard]},
 
 ];

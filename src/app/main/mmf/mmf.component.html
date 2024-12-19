@@ -1,95 +1,151 @@
+
+
+<ngx-spinner
+  class="spinner"
+  bdOpacity="0.1"
+  size="medium"
+  color="#6E7A78"
+  type="ball-circus"
+  [fullScreen]="true"
+></ngx-spinner>
+.
 <h1 class="header_text">Müştəri müraciət forması</h1>
 <main>
-    <h2 class="backText">CR24-00001</h2>
-    <div class="table_list info">
-        <table>
-           
-            <tr>
-              <td>Müştəri tipi</td>
-              <td>HypoCaust MMC</td>
-            </tr>
-            <tr>
-              <td>Sifarişçi</td>
-              <td>Tağı Tağıyev</td>
-            </tr>
-            <tr>
-                <td>Müqavilə növü</td>
-                <td></td>
-              </tr>
-              <tr>
-                <td>Soyuq anbar xidməti</td>
-                <td>Müqavilə № </td>
-              </tr>
-          </table>
-          <div class="btnbox">
-          <button class="confirm_button addbtn">Əlavə et</button>
+  <div [formGroup]="dateFilter">
+      <mat-form-field class="w-100"  >
+          <mat-date-range-input [rangePicker]="picker" >
+              <input matStartDate placeholder="Start date" formControlName="beginDate">
+              <input matEndDate placeholder="End date" formControlName="endDate">
+          </mat-date-range-input>
+          <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+          <mat-date-range-picker #picker>
+              <mat-date-range-picker-actions>
+                  <button mat-button matDateRangePickerCancel>Cancel</button>
+                  <button mat-raised-button matDateRangePickerApply (click)="onDateRangeChange()">Apply</button>
+                </mat-date-range-picker-actions>
+          </mat-date-range-picker>
+          
+      </mat-form-field>
+ 
+  </div>
+   
 
+  
+      <div class="row mb-2" >
+          <div class="col-4 custom_colored_box" *ngFor="let item of statusResult" (click)="getAllMMF(item.paymentStatusId || item.key)">
+              <div 
+              [ngClass]="{
+                          'custom-card_green green_text': item.key === 4 ||  item.key === 3,
+                  'custom-card_yellow yellow_text  ': item.key === 1,
+                  'custom-card_red red_text': item.key === 2 
+                }">
+                  <h1>{{item.status || item.value}}</h1>
+                  <h1>{{item.count}}</h1>
+              </div>      
           </div>
+       
+           
+    
+      </div>
+      <div class="text-end mb-2">
+        <button class="confirm_button w-25" (click)="addMMF()">Yeni</button>
+      </div>
+      <div 
+      [ngClass]="{
+          'table_list_green info_green custom-card_green': item.statusId === 4 ||  item.statusId === 3,
+          'table_list_yellow info_yellow custom-card_yellow m-0': item.statusId === 1 || item.statusId === 0 ,
+          'table_list_red info_red custom-card_red m-0': item.statusId === 2
+        }" *ngFor="let item of browseResult">
           <table>
-           
-            <tr>
-              <td>İcra tarixi</td>
-              <td>dd.mm.yyyy</td>
+  
+              <tr>
+                  <td class="head">{{item.docNo}}</td>
+                  <td>
+                      <h4 class="red_text header "
+                      [ngClass]="{
+                          'green_text header_green': item.statusId === 4 ||  item.statusId === 3,
+                          'yellow_text header_yellow':item.statusId === 1 || item.statusId === 0,
+                          'red_text header_': item.statusId === 2
+                        }"
+                      >{{item.paymentStatus}}</h4>
+                      <!-- <img (click)="addMMF(item.id)" src="../../../assets/images/icon/mmf.svg" alt=""> -->
+
+                  </td>
+              </tr>
+              <tr>
+                  <td class="w-25">Müştəri</td>
+                  <td>{{item.companyName}}</td>
+              </tr>
+              <tr>
+                  <td class="w-25">Müqavilə növü</td>
+                  <td>{{item.contractType }}</td>
+              </tr>
+              <tr>
+                  <td class="w-25">Xidmət</td>
+                  <td>{{item.services}}</td>
+              </tr>
+  
+              <tr>
+                  <td class="w-25">Sifariş tipi</td>
+                  <td>{{item.orderSubOperationType}}   {{item.orderNo}}</td>
+              </tr>
+  
+  
+              <tr>
+                  <td class="w-25">Məhsul</td>
+                  <td>{{item.cargoName}}</td>
+              </tr>
+  <!-- 
+              <tr>
+                  <td>Gecikmə gün sayı</td>
+                  <td>0</td>
+              </tr>  -->
+              <tr>
+                  <td class="w-25">               Miqdar </td>
+                  <td>{{item.quantity}}</td>
+              </tr>
+              <tr>
+                  <td class="w-25">Qəbul forması</td>
+                  <td>{{item.packTypeName}}</td>
+              </tr>
+
+              <tr>
+                <td class="w-25">Anbar</td>
+                <td>{{item.warehouseName}}</td>
             </tr>
+         
+
             <tr>
-              <td>Sifariş tipi</td>
-              <td></td>
+                <td class="w-25">Kamera</td>
+                <td>{{item.warehouseCameraName}}</td>
             </tr>
+         
             <tr>
-                <td>Saxlanc giriş</td>
-                <td>Sifariş № </td>
-              </tr>
-              <tr>
-                <td>Məhsul</td>
-                <td>Nektarin </td>
-              </tr>
-              <tr>
-                <td>Miqdarı</td>
-                <td>Lorem </td>
-              </tr>
-              <tr>
-                <td>Qəbul forması</td>
-                <td>Yeşik </td>
-              </tr>
-              <tr>
-                <td>Anbar</td>
-                <td>B01 </td>
-              </tr>
-              <tr>
-                <td>Kamera</td>
-                <td>A-03 </td>
-              </tr>
-              <tr>
-                <td>Qapı</td>
-                <td>Lorem </td>
-              </tr>
-              <tr>
-                <td>Daşıma tipi</td>
-                <td>Lorem </td>
-              </tr>
-
-              <tr>
-                <td>Daşıyıcının № </td>
-                <td>Lorem </td>
-              </tr>
-
-
-              <tr>
+                <td class="w-25">Daşıma tipi</td>
+                <td>{{item.transportType}} Name </td>
+            </tr>
+         
+            <tr>
+                <td class="w-25">Daşıyıcı №</td>
+                <td>{{item.truckPlateNo}}</td>
+            </tr>
+         
+            <!-- <tr>
                 <td>Statusu</td>
-                <td>Gözləyən </td>
-              </tr>
-
-              <tr>
-                <td>Səbəb</td>
-                <td>Lorem </td>
-              </tr>
-
-            
+                <td>{{item.truckCount}}</td>
+            </tr> -->
+           
+  
+  
           </table>
-          <div class="box d-flex align-items-center">
-            <a class="openConfirmPopUp w-100" (click)="openDialog()">Şərtlərə bax</a>
-            <button class="confirm_button w-100">Təsdiq et</button>
-          </div>
-    </div>
-
-</main>
+        
+      </div>
+  
+      <nav id="datatablePagination" aria-label="Activity pagination">
+              <mat-paginator [length]="length" [pageSize]="pageSize" [pageSizeOptions]="pageSizeOptions"
+                (page)="onChangePage($event)" showFirstLastButtons>
+              </mat-paginator>
+            </nav>  
+  
+     
+  </main>

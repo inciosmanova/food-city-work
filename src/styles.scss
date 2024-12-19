@@ -74,7 +74,16 @@ a {
   margin-top: auto;
   /* Butonu en alta it */
 }
+.red_button{
+  background: #ee1b29;
 
+}
+.transparant_button{
+  border: 1px solid #0D9677!important;
+  color: #0D9677!important;
+  background: transparent!important;
+
+}
 .info, .info_green , .info_yellow , .info_red , .info_grey {
   padding: 30px;
 width: 98%;
