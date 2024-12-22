@@ -68,7 +68,7 @@
                           'red_text header_': item.statusId === 2
                         }"
                       >{{item.paymentStatus}}</h4>
-                      <!-- <img (click)="addMMF(item.id)" src="../../../assets/images/icon/mmf.svg" alt=""> -->
+                      <img (click)="addMMF(item.id)" src="../../../assets/images/icon/mmf.svg" alt="">
 
                   </td>
               </tr>
@@ -76,6 +76,10 @@
                   <td class="w-25">Müştəri</td>
                   <td>{{item.companyName}}</td>
               </tr>
+              <tr>
+                <td class="w-25">Sifarişçi</td>
+                <td>{{fullName}}</td>
+            </tr>
               <tr>
                   <td class="w-25">Müqavilə növü</td>
                   <td>{{item.contractType }}</td>
@@ -122,7 +126,7 @@
          
             <tr>
                 <td class="w-25">Daşıma tipi</td>
-                <td>{{item.transportType}} Name </td>
+                <td>{{item.transportTypeName}}  </td>
             </tr>
          
             <tr>

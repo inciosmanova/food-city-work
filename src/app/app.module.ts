@@ -12,6 +12,8 @@ import { RoleGuard } from './login/role.guard';
 import { UnAuthorizedInterceptor } from './_interceptors/un-authorized-interceptor.ts';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { CommonModule } from '@angular/common';
+import { SafeStockPipe } from './main/categories/warehouse/print-warehouse/safe-stock-pipe.pipe';
 
 @NgModule({
   declarations: [
@@ -26,9 +28,11 @@ import { MatCardModule } from '@angular/material/card';
     MatDialogModule,
     MatCardModule,
     SlickCarouselModule,
+    CommonModule
   ],
   providers: [
     LoginGuard, RoleGuard,
+    SafeStockPipe,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: UnAuthorizedInterceptor,

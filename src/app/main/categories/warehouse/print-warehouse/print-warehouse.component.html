@@ -1,0 +1,255 @@
+
+<div class="header">
+  <div class="row align-items-center">
+    <div class="col-3 img">
+      <img src="../../../assets/img/newLogo.svg" style="width:200px;" alt="">
+
+    </div>
+    <div class="col-9">
+      <h1 *ngIf="type==1">Saxlanc giriş Akt No : {{printOrder?.docNo}}</h1>
+      <h1 *ngIf="type==2">Saxlanc çıxış Akt No : {{printOrder?.docNo}}</h1>
+    </div>
+  </div>
+</div>
+<main>
+  <div class="row">
+    <div class="col-4">
+      <table style="width:100%">
+        <tr>
+          <th>Struktur bölmә :</th>
+          <td>Saxlanc Xidmәti</td>
+        </tr>
+
+        <tr>
+          <th>Müştәri adı :</th>
+          <td>{{printOrder?.companyName}}</td>
+        </tr>
+
+        <tr class="h-30">
+          <th>Müqavilә No :</th>
+          <td>{{warehouseOperationDetails[0]?.contractNo}} </td>
+        </tr>
+
+        <tr>
+          <th>Müq. növü No :</th>
+          <td>{{warehouseOperationDetails[0]?.contractType}}</td>
+        </tr>
+        <tr class="h-30">
+          <th></th>
+          <td> </td>
+        </tr>
+ 
+ 
+      </table>
+    </div>
+    <div class="col-4">
+      <table style="width:100%">
+        <tr>
+          <th>Sifariş No :</th>
+          <td>{{warehouseOperationDetails[0]?.parentOrderNo}}</td>
+        </tr>
+
+        <tr>
+          <th>NV No :</th>
+          <td>{{printOrder?.truckName}}</td>
+        </tr>
+
+        <tr class="h-30">
+          <th>Tarix :</th>
+          <td> {{warehouseOperationDetails[0]?.orderDate | date:'dd-MM-yyyy'}}</td>
+        </tr>
+
+      
+        <tr>
+          <th>Əməlliyyat nömrəsi :</th>
+          <td>{{warehouseOperationDetails[0]?.orderNo}} </td>
+        </tr>
+        <tr class="h-30">
+          <th></th>
+          <td> </td>
+        </tr>
+ 
+      </table>
+    </div>
+    <div class="col-4">
+
+      <table style="width:100%">
+        <tr>
+          <th class="w-45">Tәsdiq edici şöbә :</th>
+          <td>Mühasibatlıq</td>
+        </tr>
+
+        <tr>
+          <th class="w-45">Əməkdaş :</th>
+          <td></td>
+        </tr>
+        <tr class="h-30">
+          <th class="br_trans w-45">İmza :</th>
+          <td class="bl_trans"></td>
+        </tr>
+
+
+      
+        <tr>
+          <th class="w-45">Xidmət rəhbəri :</th>
+          <td> </td>
+        </tr>
+        <tr class="h-30">
+          <th class="br_trans w-45">İmza :</th>
+          <th class="bl_trans"></th>
+        </tr>
+ 
+   
+ 
+      </table>
+
+
+    </div>
+    <!-- //xidmetler -->
+    <div class="col-12">
+      <table style="width:100%">
+        <tr>
+          <th>Xidmәt Kodu</th>
+          <th>Xidmәtlәr</th>
+          <th>Ölçü vahidi </th>
+          <th>Miqdar</th>
+        </tr>
+
+        <tr *ngFor="let item of services">
+          <td>{{item?.code}}</td>
+          <td>{{item?.serviceName}}</td>
+          <td>{{item?.uomName}}</td>
+          <td class="text-right">{{item?.quantity | number : '1.2-2'}}</td>
+        </tr>
+        <tr >
+          <td colspan="1"  class="custom_h" >Qeyd :</td>
+           
+        </tr>
+
+
+ 
+      </table>
+    </div>
+
+    <div class="col-12">
+      <table style="width:100%">
+        <tr>
+          <th>Barkod</th>
+          <th>Mәhsul</th>
+          <th>Qablaşdırma</th>
+          <th>Ölçü vahidi </th>
+          <th>Qablaşdırma miqdarı </th>
+          <th>Brutto</th>
+          <th>Tara</th>
+          <th>Netto</th>
+          <th>İstiqamәt</th>
+        </tr>
+
+        <tr *ngFor="let item of warehouseOperationDetails">
+          <td>{{item?.barcode}}</td>
+          <td>{{item?.cargoName}}</td>
+          <td>{{item?.packType}}</td>
+          <td>{{item?.uomName}}</td>
+          <td class="text-right">{{item?.packQuantity | number : '1.2-2'}}</td>
+          <td class="text-right">{{item?.bruttoKg | number : '1.2-2'}}</td>
+          <td class="text-right">{{item?.tara | number : '1.2-2'}}</td>
+          <td class="text-right">{{item?.nettoKg | number : '1.2-2'}}</td>
+          <td>{{item?.warehouseName}}</td>
+        </tr>
+
+        <tr >
+          <td colspan="4">Yekun : </td>
+    
+          <td class="text-right">{{packQuantity | number : '1.2-2'}}</td>
+          <td class="text-right">{{bruttoKg | number : '1.2-2'}}</td>
+          <td class="text-right">{{tara | number : '1.2-2'}}</td>
+          <td class="text-right">{{nettoKg | number : '1.2-2'}}</td>
+  
+          <td></td>
+        </tr>
+
+
+        
+ 
+      </table>
+    </div>
+
+
+    
+    <div class="col-12">
+      <table style="width:100%">
+        <tr>
+          <th>Xidmәt Kodu</th>
+          <th>Material</th>
+          <th>Ölçü vahidi </th>
+          <th>Miqdar</th>
+          <th>Tәchizatçı</th>
+          <th>Әmәliyyat anbarı</th>
+        </tr>
+
+        <tr *ngFor="let item of warehouseOperationMaterials">
+       
+          <td>{{item?.serviceCode}}</td>
+          <td>{{item?.materialName}}</td>
+          <td>{{item?.uomName}}</td>
+          <td class="text-right">{{item?.quantity | number : '1.2-2'}}</td>
+          <td>{{item?.supplier}}</td>
+          <td>{{item?.warehouseOperator}}</td>
+        </tr>
+        <tr>
+          <td colspan="1" class="custom_h">Qeyd :</td>
+        </tr>
+       
+
+    
+ 
+      </table>
+    </div>
+    <div class="col-6 bottom_print">
+      <h6>Müştәri</h6>
+      <!-- <p> &nbsp; &nbsp; &nbsp;   </p> -->
+      <p>{{printOrder?.contractCompanyName  }} &nbsp;</p>
+      <!-- <p>{{warehouseOperationDetails[0]?.plenipotentiary  }} &nbsp;</p> -->
+
+      <p class="line"></p>
+    </div>
+
+    <div class="col-6 bottom_print">
+      <h6>Saxlanc Xidmәtlәri</h6>
+      <!-- <p>{{userName }}&nbsp;</p> -->
+      <p>{{printOrder?.warehouseDocCreatorUser   }} &nbsp;</p>
+
+      <!-- <p>Operator adı</p> -->
+      <p class="line"></p>
+    </div>
+
+    <div class="col-6 bottom_print">
+      <h6>Terminal Xidməti</h6>
+      <!-- <p>Әmәliyyat anbarı operatoru</p> -->
+      <!-- <p>Әmәliyyat anbarı operatoru</p> -->
+      <p>{{warehouseOperationDetails[0]?.contractCompanyName  }} &nbsp;</p>
+
+      <!-- <p > &nbsp;</p> -->
+      <p class="line"></p>
+    </div>
+
+    <div class="col-6 bottom_print">
+      <h6>Müştәri Xidmәtlәri </h6>
+      <!-- <p>Müştәri xidmәtlәri kordinatoru</p> -->
+      <p>{{warehouseOperationDetails[0]?.orderCreatorUser }} &nbsp;</p>
+      <p class="line"></p>
+    </div>
+    <div class="col-12 p-0">
+      <!-- <ngx-barcode class="d-flex justify-content-end"[bc-value]="barcode" [bc-format]="'CODE128'"></ngx-barcode> -->
+
+      <!-- <ngx-qrcode  class="d-flex justify-content-end p-1"  [elementType]="elementType"
+      [errorCorrectionLevel]="correctionLevel"
+      [value]="qrData "
+      cssClass="bshadow"
+       [value]="qrData"
+       [width]=85></ngx-qrcode> -->
+
+
+    </div>
+  </div>
+</main>

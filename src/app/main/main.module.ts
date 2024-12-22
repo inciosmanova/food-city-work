@@ -37,6 +37,8 @@ import {MatMenuModule} from '@angular/material/menu';
 import { SlickCarouselModule } from 'ngx-slick-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NewMmfComponent } from './mmf/new-mmf/new-mmf.component';
+import { SafeStockPipe } from './categories/warehouse/print-warehouse/safe-stock-pipe.pipe';
+import { PrintWarehouseComponent } from './categories/warehouse/print-warehouse/print-warehouse.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { NewMmfComponent } from './mmf/new-mmf/new-mmf.component';
     CustomsClearanceComponent,
     ReportsComponent,
     NewMmfComponent,
+    SafeStockPipe,
+    PrintWarehouseComponent
 
   ],
   imports: [
@@ -77,12 +81,11 @@ import { NewMmfComponent } from './mmf/new-mmf/new-mmf.component';
     MatMenuModule,
     SlickCarouselModule,
     CarouselModule,
-    MatPaginatorModule
+    MatPaginatorModule,
 
   ],
   providers: [
     DatePipe ,
-    
     {
       provide: HTTP_INTERCEPTORS,
       useClass: LoadingInterceptor,

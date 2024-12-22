@@ -73,8 +73,8 @@
             id="servicegroupId"
           >
             <mat-option
-              *ngFor="let item of servicegroups"
-              [value]="item.serviceGroupId"
+              *ngFor="let item of servicegroups"  disabled="true"
+              [value]="item.serviceGroupId" 
             >
               {{ item.serviceGroupName}}
             </mat-option>
@@ -112,7 +112,7 @@
                   </mat-select>
                 </mat-form-field>
               </div>
-              <div class="col-3">
+              <div class="col-3" *ngIf="id==0">
                 <button
                   type="button"
                   class="confirm_button red_button w-100"
@@ -125,7 +125,7 @@
             
           </div>
         </div>
-        <div class="text-end">
+        <div class="text-end" *ngIf="id==0">
           <button type="button" class="confirm_button w-50 mb-2" (click)="addItem()">
             Əlavə et
           </button>
@@ -404,7 +404,7 @@
         <button (click)="back()"  class="confirm_button transparant_button w-100">Geri</button>
       </div>
       <div class="col-6 text-end pb-2">
-        <button (click)="submit()"  class="confirm_button w-100">Təsdiq et</button>
+        <button *ngIf="id==0" (click)="submit()"  class="confirm_button w-100">Təsdiq et</button>
       </div>
     </div>
   </form>

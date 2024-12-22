@@ -73,6 +73,10 @@ export class GlobalService {
     return this.http.get<any>(this.baseUrl + `getCompanyApplicationById/${id}`)
   }
 
+  getWarehouseOperationById(id:string): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `GetWarehouseOperationById/GetWarehouseOperationById?id=${id}&fromLogging=false`)
+  }
+
   getContractById(id:number): Observable<any> {
     return this.http.get<any>(this.baseUrl + `getContractById/${id}`)
   }

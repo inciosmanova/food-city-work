@@ -23,36 +23,54 @@ export class NewMmfComponent {
   vehicles: any;
   warehouseDoors: any;
   message: string = '';
-  id:any
-  getForm:any
-  getServices:any
+  id: any=0;
+  getForm: any;
+  getServices: any;
   constructor(
     private router: Router,
     private fb: FormBuilder,
     private globalService: GlobalService,
     private alertService: AlertService,
-    private datePipe: DatePipe,
+    private datePipe: DatePipe
   ) {
     const navigation = this.router.getCurrentNavigation();
-    this.id = navigation?.extras.state;
+    Number(navigation?.extras.state) >0 ?this.id = navigation?.extras.state : this.id=0;
   }
   ngOnInit() {
     this.createForm();
-    this.getToken();
     this.getContractsWithOrdersByCompany();
     this.getPackTypes();
     this.typeOfVehicles();
-
-    this.id>0? this.getById():''
+    let today = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
+    this.form.patchValue({ executionDate: today });
+    this.form.patchValue({ date: today });
+    this.id > 0 ? this.getById() : this.addItem();
+    this.getToken();
   }
-  getById(){
-     this.globalService.getCompanyApplicationById(this.id).subscribe(res=>{
+  getById() {
+    this.globalService.getCompanyApplicationById(this.id).subscribe((res) => {
       console.log(res);
-      this.getForm=res.data.main
-      this.getServices=res.data.services
-      this.selectType(this.getForm.contractId,'contract')
-      this.selectType(this.getForm.warehouseId,'warehouse')
-     })
+      this.getForm = res.data.main;
+      this.getServices = res.data.services;
+      this.selectType(this.getForm.contractId, 'contract');
+      this.selectType(this.getForm.warehouseId, 'warehouse');
+      this.createForm();
+      this.getServices.map((res: any) => {
+        const itemForm = this.fb.group({
+          id: [res.id], // Form control adı
+          serviceId: [res.serviceId],
+          status: [true], // Form control miktarı
+        });
+        this.items.push(itemForm);
+      });
+      
+      this.form.patchValue({
+        servicegroupId: this.servicegroups[0].servicegroupId,
+      });
+      this.form.patchValue({
+        servicegroupName: this.servicegroups[0].servicegroupName,
+      });
+    });
   }
   getContractsWithOrdersByCompany() {
     this.globalService.getContractsWithOrdersByCompany().subscribe((res) => {
@@ -63,7 +81,21 @@ export class NewMmfComponent {
   selectType(key: any, type: string) {
     if (type == 'contract') {
       this.globalService.getContractById(key).subscribe((res) => {
-        this.servicegroups = res.data.specialOffers;
+        let servicegroups: any = [];
+        debugger
+        servicegroups.push({
+          serviceGroupId: res.data.main.orderTypeId,
+          serviceGroupName: res.data.main.orderType,
+        });
+
+        this.servicegroups = servicegroups;
+        
+        this.form.patchValue({
+          servicegroupId: this.servicegroups[0].serviceGroupId,
+        });
+        this.form.patchValue({
+          servicegroupName: this.servicegroups[0].serviceGroupName,
+        });
         this.contractOrders = res.data.contractOrders;
         this.services = res.data.contractServices;
         this.contractWarehouses = res.data.contractWarehouses;
@@ -82,55 +114,57 @@ export class NewMmfComponent {
   }
 
   typeOfVehicles() {
-    this.globalService
-      .getTransportTypes()
-      .subscribe((res) => {
-        this.vehicles = res.data;
-      });
+    this.globalService.getTransportTypes().subscribe((res) => {
+      this.vehicles = res.data;
+    });
   }
 
   getToken() {
     let fullName = localStorage.getItem('fullName');
     let companyId = Number(localStorage.getItem('companyId'));
     let companyName = localStorage.getItem('companyName');
-    let today = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     this.form.patchValue({ companyName: companyName });
     this.form.patchValue({ companyId: companyId });
     this.form.patchValue({ fullName: fullName });
-    this.form.patchValue({ executionDate: today });
-    this.form.patchValue({ date: today });
   }
   createForm() {
     this.form = this.fb.group({
-      id: [0, Validators.required],
-      date: ['', Validators.required],
-      docNo: ['', Validators.required],
-      orderId: ['', Validators.required],
-      fullName: ['', Validators.required],
-      executionDate: ['', Validators.required],
-      companyId: ['', Validators.required],
-      companyName: ['', Validators.required],
-      contractId: ['', Validators.required],
-      paymentDescription: ['', Validators.required],
-      orderSubOperationTypeId: ['', Validators.required],
-      cargoId: ['', Validators.required],
-      quantity: ['', Validators.required],
-      warehouseId: ['', Validators.required],
-      warehouseDoorId: ['', Validators.required],
-      warehouseCameraId: ['', Validators.required],
-      packTypeId: ['', Validators.required],
-      servicegroupId: ['', Validators.required],
-      transportType: ['', Validators.required],
-      truckPlateNo: ['', Validators.required],
-      description: ['', Validators.required],
-      statusId: [1, Validators.required],
-      services: this.fb.array([
-        this.fb.group({
-          id: [0], // Form control adı
-          serviceId: [''],
-          status: [true], // Form control miktarı
-        }),
-      ]),
+      id: [this.getForm?.id || 0],
+      date: [this.getForm?.date || ''],
+      docNo: [this.getForm?.docNo || ''],
+      orderId: [this.getForm?.orderId || '', Validators.required],
+      fullName: [localStorage.getItem('fullName') || '', Validators.required],
+      executionDate: [
+        this.datePipe.transform(this.getForm?.executionDate, 'yyyy-MM-dd') ||
+          '',
+        Validators.required,
+      ],
+      companyId: [this.getForm?.companyId || '', Validators.required],
+      companyName: [this.getForm?.companyName || ''],
+      contractId: [this.getForm?.contractId || '', Validators.required],
+      paymentDescription: [this.getForm?.paymentDescription || ''],
+      orderSubOperationTypeId: [
+        this.getForm?.orderSubOperationTypeId || '',
+        Validators.required,
+      ],
+      cargoId: [this.getForm?.cargoId || '', Validators.required],
+      quantity: [this.getForm?.quantity || '', Validators.required],
+      warehouseId: [this.getForm?.warehouseId || '', Validators.required],
+      warehouseDoorId: [
+        this.getForm?.warehouseDoorId || '',
+        Validators.required,
+      ],
+      warehouseCameraId: [
+        this.getForm?.warehouseCameraId || '',
+        Validators.required,
+      ],
+      packTypeId: [this.getForm?.packTypeId || '', Validators.required],
+      servicegroupId: [this.getForm?.servicegroupId || '', Validators.required],
+      transportType: [this.getForm?.transportType || '', Validators.required],
+      truckPlateNo: [this.getForm?.truckPlateNo || '', Validators.required],
+      description: [this.getForm?.description || ''],
+      statusId: [this.getForm?.statusId || 1],
+      services: this.fb.array([]),
     });
   }
   get items(): FormArray {
@@ -155,18 +189,18 @@ export class NewMmfComponent {
     this.router.navigate(['/modules/main/mmf']);
   }
   submit() {
-    console.log(this.form.value);
-    this.globalService
-      .addOrUpdateCompanyApplication(this.form.value)
-      .subscribe({
-        next: (result: any) => {
-          this.alertService.succesService(result.message);
-          this.router.navigate(['/modules/main/mmf']);
-
-        },
-        error: (res: any) => {
-          this.alertService.errorService(res.message);
-        },
-      });
+    if (this.form.valid) {
+      this.globalService
+        .addOrUpdateCompanyApplication(this.form.value)
+        .subscribe({
+          next: (result: any) => {
+            this.alertService.succesService(result.message);
+            this.router.navigate(['/modules/main/mmf']);
+          },
+          error: (res: any) => {
+            this.alertService.errorService(res.message);
+          },
+        });
+    }
   }
 }

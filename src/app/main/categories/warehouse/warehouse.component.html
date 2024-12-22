@@ -62,9 +62,13 @@
     }"
     *ngFor="let item of browseResult"
   >
+  <iframe style="visibility: hidden;"
+  [src]="printUrl+item.id| safeStockPipe" id="frame" width="1"
+    height="1"></iframe>
     <table>
+
       <tr>
-        <td class="head">{{ item.docNo }}</td>
+        <td class="head" style="cursor:pointer" (click)="openPrint()" >{{ item.docNo }}</td>
         <td>
           <h4 class="red_text header d-flex"></h4>
         </td>
@@ -140,6 +144,7 @@
           -->
     </table>
   </div>
+  
 
   <nav id="datatablePagination" aria-label="Activity pagination">
     <mat-paginator

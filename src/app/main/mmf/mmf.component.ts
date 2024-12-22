@@ -37,6 +37,7 @@ export class MmfComponent {
   browseResult: any[] = [];
   resultBrowse: any;
   statusWithCount: any;
+  fullName:any
   constructor(private globalService: GlobalService, 
     private fb: FormBuilder,
     private router:Router
@@ -44,6 +45,8 @@ export class MmfComponent {
   ngOnInit(): void {
     this.createForm();
     this.getAllMMF(this.status);
+     this.fullName = localStorage.getItem('fullName');
+
   }
   onChangePage(pe: PageEvent) {
     this.requsetData.nextPageNumber = pe.pageIndex + 1;
@@ -69,6 +72,14 @@ export class MmfComponent {
       .subscribe((res) => {
         this.length = res.data.browse.count;
         this.statusResult = res.data.statuses;
+        debugger
+        this.statusResult.map(res=>{
+          res.id ==1 ? res.count = this.statusWithCount[0].pendingCount :''
+          res.id ==2 ? res.count = this.statusWithCount[0].cancelCount :''
+          res.id ==3 ? res.count = this.statusWithCount[0].acceptedCount :''
+          res.id ==4 ? res.count = this.statusWithCount[0].solvedCount :''
+        })
+     
         this.browseResult = res.data.browse.result;
         this.statusWithCount = res.data.statusWithCount;
       });

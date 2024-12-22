@@ -17,6 +17,7 @@ import { GlobalService } from 'src/app/_services/global.service';
 export class WarehouseComponent implements OnInit {
   length!: number
   pageSize!: number;
+  printUrl: string = '/stockPrint/'
   pageSizeOptions: number[] = [10, 20, 50];
   requsetData: TableRequestModel = {
     currentPageName: '',
@@ -69,5 +70,17 @@ resultBrowse: any;
     this.requsetData.beginDate = this.dateFilter.value.beginDate;
     this.requsetData.endDate = this.dateFilter.value.endDate;
     this.getAllWarehouseOperation(this.status)
+  }
+  openPrint() {
+    var frame = document.getElementById('frame') as any;
+    const iframeWindow = frame!.contentWindow;
+    const iframeDocument = iframeWindow!.document;
+    if (iframeDocument.readyState === 'complete') {
+      iframeWindow.focus();
+      iframeWindow.print();
+    } else {
+     this.openPrint()
+    }
+
   }
 }
