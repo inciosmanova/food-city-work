@@ -28,7 +28,7 @@ import { SafeStockPipe } from './main/categories/warehouse/print-warehouse/safe-
     MatDialogModule,
     MatCardModule,
     SlickCarouselModule,
-    CommonModule
+    CommonModule,
   ],
   providers: [
     LoginGuard, RoleGuard,

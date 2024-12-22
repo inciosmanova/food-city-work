@@ -30,7 +30,7 @@ export class PrintWarehouseComponent {
   // barcode: any = '12345678';
   elementType = NgxQrcodeElementTypes.URL;
   correctionLevel = NgxQrcodeErrorCorrectionLevels.HIGH;
-  qrData: string = ''
+  qrData: string = '111111111111111111111111111111111'
   constructor(
     private ActivatedRoute: ActivatedRoute,
     private router: Router,
@@ -79,13 +79,14 @@ export class PrintWarehouseComponent {
 
     this.date = oneMonthLater;
     this.ActivatedRoute.paramMap.subscribe((params: any) => {
-      this.type = params.get('type')
       this.id = params.get('id');
       
       this.globalService.getWarehouseOperationById(this.id).subscribe((response) => {
         // this.SelectWareHouse(response?.data?.warehouseOperationDetails?.exitWarehouseId)
 
         this.printOrder = response?.data?.warehouseOperation
+      this.type = response?.data?.warehouseOperation.type
+
         this.warehouseOperationDetails = response?.data?.warehouseOperationDetails
         this.warehouseOperationMaterials = response?.data?.warehouseOperationMaterials
         this.services = response?.data?.warehouseOperationServices

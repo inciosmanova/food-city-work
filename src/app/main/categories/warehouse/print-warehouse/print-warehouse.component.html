@@ -2,7 +2,7 @@
 <div class="header">
   <div class="row align-items-center">
     <div class="col-3 img">
-      <img src="../../../assets/img/newLogo.svg" style="width:200px;" alt="">
+      <img src="../../../../../assets/images/newLogo.svg" style="width:200px;" alt="">
 
     </div>
     <div class="col-9">
@@ -12,8 +12,8 @@
   </div>
 </div>
 <main>
-  <div class="row">
-    <div class="col-4">
+  <div class="row ">
+    <div class="col-4 mt-3">
       <table style="width:100%">
         <tr>
           <th>Struktur bölmә :</th>
@@ -42,7 +42,7 @@
  
       </table>
     </div>
-    <div class="col-4">
+    <div class="col-4 mt-3">
       <table style="width:100%">
         <tr>
           <th>Sifariş No :</th>
@@ -71,7 +71,7 @@
  
       </table>
     </div>
-    <div class="col-4">
+    <div class="col-4 mt-3">
 
       <table style="width:100%">
         <tr>
@@ -106,7 +106,7 @@
 
     </div>
     <!-- //xidmetler -->
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <table style="width:100%">
         <tr>
           <th>Xidmәt Kodu</th>
@@ -131,7 +131,7 @@
       </table>
     </div>
 
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <table style="width:100%">
         <tr>
           <th>Barkod</th>
@@ -176,7 +176,7 @@
 
 
     
-    <div class="col-12">
+    <div class="col-12 mt-3">
       <table style="width:100%">
         <tr>
           <th>Xidmәt Kodu</th>
@@ -205,7 +205,7 @@
  
       </table>
     </div>
-    <div class="col-6 bottom_print">
+    <div class="col-6 bottom_print mt-3">
       <h6>Müştәri</h6>
       <!-- <p> &nbsp; &nbsp; &nbsp;   </p> -->
       <p>{{printOrder?.contractCompanyName  }} &nbsp;</p>
@@ -214,7 +214,7 @@
       <p class="line"></p>
     </div>
 
-    <div class="col-6 bottom_print">
+    <div class="col-6 bottom_print mt-3">
       <h6>Saxlanc Xidmәtlәri</h6>
       <!-- <p>{{userName }}&nbsp;</p> -->
       <p>{{printOrder?.warehouseDocCreatorUser   }} &nbsp;</p>
@@ -223,7 +223,7 @@
       <p class="line"></p>
     </div>
 
-    <div class="col-6 bottom_print">
+    <div class="col-6 bottom_print mt-3">
       <h6>Terminal Xidməti</h6>
       <!-- <p>Әmәliyyat anbarı operatoru</p> -->
       <!-- <p>Әmәliyyat anbarı operatoru</p> -->
@@ -233,21 +233,21 @@
       <p class="line"></p>
     </div>
 
-    <div class="col-6 bottom_print">
+    <div class="col-6 bottom_print mt-3">
       <h6>Müştәri Xidmәtlәri </h6>
       <!-- <p>Müştәri xidmәtlәri kordinatoru</p> -->
       <p>{{warehouseOperationDetails[0]?.orderCreatorUser }} &nbsp;</p>
       <p class="line"></p>
     </div>
-    <div class="col-12 p-0">
+    <div class="col-12 p-0 mt-3">
       <!-- <ngx-barcode class="d-flex justify-content-end"[bc-value]="barcode" [bc-format]="'CODE128'"></ngx-barcode> -->
 
-      <!-- <ngx-qrcode  class="d-flex justify-content-end p-1"  [elementType]="elementType"
+      <ngx-qrcode class="d-flex justify-content-end p-1" 
+      [elementType]="elementType"
       [errorCorrectionLevel]="correctionLevel"
-      [value]="qrData "
       cssClass="bshadow"
-       [value]="qrData"
-       [width]=85></ngx-qrcode> -->
+      [value]="11111111111111111111111111"
+      [width]="200"></ngx-qrcode>
 
 
     </div>
