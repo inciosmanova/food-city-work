@@ -60,9 +60,12 @@
       }"
     *ngFor="let item of browseResult"
   >
+  <iframe style="visibility: hidden;"
+  [src]="printUrl+item.id| safeStockPipe" id="frame" width="1"
+    height="1"></iframe>
     <table>
       <tr>
-        <td class="head">{{ item.orderNo }}</td>
+        <td  class="head" style="cursor:pointer" (click)="openPrint()">{{ item.orderNo }}</td>
         <td colspan="2">
           <!-- <h4 class="green_text header d-flex">İcra edilib</h4> -->
         </td>

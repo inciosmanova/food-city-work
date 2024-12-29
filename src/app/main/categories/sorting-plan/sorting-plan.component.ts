@@ -16,6 +16,8 @@ export class SortingPlanComponent {
   pageSize!: number;
   pageSizeOptions: number[] = [10, 20, 50];
   readonly dialog = inject(MatDialog);
+  printUrl: string = '/stockPrint/'
+
   requsetData: TableRequestModel = {
     currentPageName: '',
     exportToExcel: false,
@@ -66,7 +68,18 @@ status:number=0
     this.requsetData.visibleItemCount = pe.pageSize
     this.getAllOrdersBrowseMobile(this.status)
   }
+  openPrint() {
+    var frame = document.getElementById('frame') as any;
+    const iframeWindow = frame!.contentWindow;
+    const iframeDocument = iframeWindow!.document;
+    if (iframeDocument.readyState === 'complete') {
+      iframeWindow.focus();
+      iframeWindow.print();
+    } else {
+     this.openPrint()
+    }
 
+  }
 
   openDialog(){
     const dialogRef = this.dialog.open(ConfirmtextComponent);
