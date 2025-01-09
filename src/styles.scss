@@ -194,7 +194,6 @@ table{
   font-size: 15px;
   color: #CEEAE7;
   font-family: Arial, sans-serif;
-  margin: 0;
   h1{
     font-size: 14px;
   }
@@ -390,10 +389,19 @@ h1{
 
     }
   }
-  .table_list, .table_list_green, .table_list_red, .table_list_yellow{
+  .table_list_green{
+    margin-top: 5px!important;
+  }
+  .table_list_red{
+    margin-top: 5px!important;
+  }
+  .table_list_yellow{
+    margin-top: 5px!important;
+  }
+  .table_list, .table_list_green , .table_list_red , .table_list_yellow{
     padding: 5px;
     width: 95%;
-    margin-bottom: 5px;
+    margin-bottom: 5px !important;
 
     h1 {
       font-size: 16px !important;

@@ -1,0 +1,181 @@
+
+
+<div class="header">
+    <div class="row align-items-center">
+      <div class="col-3 img">
+        <img src="../../../assets/img/newLogo.svg" style="width:200px;" alt="">
+  
+      </div>
+      <div class="col-9">
+        <h1 >İstehsalata giriş No : {{printOrder?.docNo}}</h1>
+  
+      </div>
+    </div>
+  </div>
+  <main>
+    <div class="row">
+      <div class="col-4 ">
+        <table style="width:100%" class="my-2">
+          <tr>
+            <th>Struktur bölmә :</th>
+            <td>Çeşidləmə Xidməti</td>
+          </tr>
+  
+          <tr>
+            <th>Müştәri adı :</th>
+            <td>{{printOrder?.companyName}}</td>
+          </tr>
+  
+          <tr>
+            <th>Müqavilә No :</th>
+            <td>{{printOrder?.contractNo}} </td>
+          </tr>
+  
+          <tr>
+            <th>Müq. Növü  :</th>
+            <td>{{printOrder?.contractType}}</td>
+          </tr>
+  
+  
+  
+        </table>
+      </div>
+      <div class="col-4">
+        <table style="width:100%" class="my-2">
+          <tr>
+            <th>Sifariş No :</th>
+            <td>{{printOrder?.parentOrderNo}}</td>
+          </tr>
+  
+  
+  
+          <tr>
+            <th>Sif. yarad. tarixi :</th>
+            <td> {{printOrder?.orderDate | date:'dd-MM-yyyy'}}</td>
+          </tr>
+  
+  
+          <tr>
+            <th>Əməlliyyat nömrəsi :</th>
+            <td>{{printOrder?.orderNo}} </td>
+          </tr>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
+        </table>
+      </div>
+      <div class="col-4">
+  
+        <table style="width:100%" class="my-2">
+          <tr>
+            <th>Tәsdiq edici şöbә:</th>
+            <td>Mühasibatlıq</td>
+          </tr>
+  
+          <tr>
+            <th>Әmәkdaş :</th>
+            <td></td>
+          </tr>
+  
+          <tr>
+            <th>İmza :</th>
+            <td> </td>
+          </tr>
+  
+          <tr>
+            <th>Tarix :</th>
+            <td>{{printOrder?.date}} </td>
+          </tr>
+  
+        </table>
+  
+  
+      </div>
+      <!-- //xidmetler -->
+      <div class="col-12 my-2">
+        <table style="width:100%">
+          <tr>
+            <th>Barkod</th>
+            <th>Brutto
+              (kq)</th>
+            <th>Qablaşdırma
+              növü</th>
+            <th>Qablaşdırma
+              miqdarı</th>
+            <th>Tara
+              (kq)</th>
+              <th>Əlavə Tara
+                (kq)</th>
+                <th>Netto
+                  (kq)</th>
+          </tr>
+  
+          <tr *ngFor="let item of details">
+            <td>{{item?.barcode}}</td>
+            <td class="text-end px-2">{{item?.cargoWeight  | number : '1.2-2'}}</td>
+            <td>{{item?.packTypeName}}</td>
+            <td class="text-end px-2">{{item?.packQuantity  }}</td>
+            <td class="text-end px-2">{{item?.tara  | number : '1.2-2'}}</td>
+            <td class="text-end px-2">{{item?.additionalTara  | number : '1.2-2'}}</td>
+            <td class="text-end px-2">{{item?.nettoKg  | number : '1.2-2'}}</td>
+          </tr>
+  
+  
+  
+        </table>
+      </div>
+  
+  
+  
+  
+  
+  
+      <div class="col-6 bottom_print">
+        <h6>Təhvil verən</h6>
+        <p class="m-0"> Anbardar  </p>
+        <p>{{details[0]?.warehouseDocModifedUser }} &nbsp;</p>
+        <!-- <p > &nbsp;</p> -->
+  
+        <p class="line"></p>
+      </div>
+  
+      <div class="col-6 bottom_print">
+        <h6>Təhvil alan</h6>
+        <p class="m-0">İstehsalat Operatoru</p>
+        <p>{{printOrder?.modifiedUser }} &nbsp;</p>
+  
+        <!-- <p>{{userName }}&nbsp;</p> -->
+        <p class="line"></p>
+      </div>
+  
+      <div class="col-6 bottom_print">
+        <h6>Razılaşdırıldı</h6>
+        <p class="m-0">Müştəri nümayəndəsi</p>
+        <!-- <p>Әmәliyyat anbarı operatoru</p> -->
+        <p>{{printOrder?.plenipotentiary  }} &nbsp;</p>
+  
+        <p class="line"></p>
+      </div>
+  
+      <div class="col-6 bottom_print">
+        <h6> İcrasına nəzarət edən </h6>
+        <p class="m-0">Müştәri xidmәtlәri </p>
+        <p>{{printOrder?.orderCreatorUser  }} &nbsp;</p>
+        <p class="line"></p>
+      </div>
+      <div class="col-12 p-0">
+        <!-- <ngx-barcode class="d-flex justify-content-end"[bc-value]="barcode" [bc-format]="'CODE128'"></ngx-barcode> -->
+  
+        <ngx-qrcode  class="d-flex justify-content-end p-1"  [elementType]="elementType"
+        [errorCorrectionLevel]="correctionLevel"
+        [value]="qrData "
+        cssClass="bshadow"
+         [value]="qrData"
+         [width]=85></ngx-qrcode>
+  
+  
+      </div>
+    </div>
+  </main>
+  

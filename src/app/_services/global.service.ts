@@ -66,6 +66,9 @@ export class GlobalService {
     return this.http.post<OrderRoot>(this.baseUrl + `GetAllOrdersBrowseMobile?orderType=${orderType}&status=${status}`,filter)
   }
 
+  getProductionDocsBrowseData(filter : TableRequestModel,orderType:number,status:number): Observable<OrderRoot> {
+    return this.http.post<OrderRoot>(this.baseUrl + `GetProductionDocsBrowseData?statusId=${status}`,filter)
+  }
   getSpeCodeByType(type:string): Observable<SubTypeRoot> {
     return this.http.get<SubTypeRoot>(this.baseUrl + `GetSpeCodeByType?type=${type}`)
   }
@@ -80,6 +83,14 @@ export class GlobalService {
   getContractById(id:number): Observable<any> {
     return this.http.get<any>(this.baseUrl + `getContractById/${id}`)
   }
+
+  getProductionEntryById(id:number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `GetProductionEntryById?id=${id}`)
+  }
+  getProductionReadyById(id:number): Observable<any> {
+    return this.http.get<any>(this.baseUrl + `GetProductionReadyById?id=${id}`)
+  }
+
 
   getContractsWithOrdersByCompany(): Observable<any> {
     return this.http.get<any>(this.baseUrl + `GetContractsWithOrdersByCompany `)

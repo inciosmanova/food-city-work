@@ -82,7 +82,7 @@ export class NewMmfComponent {
     if (type == 'contract') {
       this.globalService.getContractById(key).subscribe((res) => {
         let servicegroups: any = [];
-        debugger
+        
         servicegroups.push({
           serviceGroupId: res.data.main.orderTypeId,
           serviceGroupName: res.data.main.orderType,

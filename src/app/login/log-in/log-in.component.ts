@@ -52,7 +52,7 @@ export class LogInComponent implements OnInit{
         next: (result: any) => {
           if(result.statusCode!==2003){
             let tokenData=this.getDecodedAccessToken(result.data.token.toString());
-            debugger
+            
             console.log(tokenData)
             localStorage.setItem('token', result.data.token);
             localStorage.setItem('companyId', tokenData.CompanyId);

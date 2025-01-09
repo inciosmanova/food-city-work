@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { PageEvent } from '@angular/material/paginator';
 import {
@@ -71,16 +71,53 @@ resultBrowse: any;
     this.requsetData.endDate = this.dateFilter.value.endDate;
     this.getAllWarehouseOperation(this.status)
   }
-  openPrint() {
-    var frame = document.getElementById('frame') as any;
-    const iframeWindow = frame!.contentWindow;
-    const iframeDocument = iframeWindow!.document;
-    if (iframeDocument.readyState === 'complete') {
-      iframeWindow.focus();
-      iframeWindow.print();
-    } else {
-     this.openPrint()
-    }
+
+
+  @ViewChild('printIframe') printIframe!: ElementRef<HTMLIFrameElement>;
+
+  openPrint(id:number): void {
+
+  
+      if (this.printIframe && this.printIframe.nativeElement) {
+        const iframeElement = this.printIframe.nativeElement;
+      
+        // Iframe'in görünürlüğünü etkinleştirme
+ 
+      
+        // Iframe içeriğini güncelleme
+        iframeElement.src = `${this.printUrl}${id}`;
+      
+        iframeElement.onload = () => {
+          try {
+            // Iframe içeriğini yazdırma
+            const iframeWindow = iframeElement.contentWindow;
+            const iframeDocument = iframeWindow!.document;
+
+            if (iframeWindow) {
+              if (iframeDocument.readyState === 'complete') {
+                iframeWindow.focus(); // Yazdırmadan önce odaklanma
+                setTimeout(() => {
+                  iframeWindow.print();
+                }, 3000);
+              // Yazdırma işlemini başlatma
+                console.log('Yazdırma işlemi başlatıldı.');
+                    } else {
+                      this.openPrint(id);
+                    }
+            } else {
+              console.error('Iframe penceresine erişim sağlanamadı.');
+            }
+          } catch (error) {
+            console.error('Yazdırma sırasında bir hata oluştu:', error);
+          }
+        };
+      } else {
+        console.error('Iframe bulunamadı!');
+      }
+      
+   
+
+
 
   }
 }

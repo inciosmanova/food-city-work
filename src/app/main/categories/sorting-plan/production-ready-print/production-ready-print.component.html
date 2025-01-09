@@ -1,0 +1,194 @@
+
+<div id="printContent" #printContent>
+    <div class="header">
+      <div class="row align-items-center">
+        <div class="col-3 img">
+          <img src="../../../assets/img/newLogo.svg" class="pe-1" style="width:200px;" alt="">
+    
+        </div>
+        <div class="col-9">
+          <h1 >Çeşidləmə hazır məhsul sənədi №  : {{printMain?.docNo}}</h1>
+    
+        </div>
+      </div>
+    </div>
+    <main>
+      <div class="row mt-2">
+        <div class="col-6">
+          <table style="width:100%" class="">
+            <tr>
+              <th>Müştəri :</th>
+              <td>{{printOrder?.order?.companyName}}</td>
+            </tr>
+            <tr>
+              <th>Müqavilə № :</th>
+              <td>{{printOrder?.order?.contractNo}}</td>
+            </tr>
+            <tr>
+              <th>Sifariş No :</th>
+              <td>{{printMain?.orderNo}}</td>
+            </tr>
+            <tr>
+              <th>Məhsul :</th>
+              <td>{{printMain?.cargoName}}
+          </table>
+        </div>
+    
+        <div class="col-6">
+          <table style="width:100%" class="my-2">
+            <tr>
+              <th>İstehsalat giriş sənəd № :</th>
+              <td>{{entryDocno}}</td>
+            </tr>
+    
+            <tr>
+              <th>Tarix :</th>
+              <td>{{printMain?.date  }}</td>
+            </tr>
+            <tr>
+              <th>Struktur rəhbəri :</th>
+              <td></td>
+            </tr>
+            <tr>
+              <th>Səhifə sayı :</th>
+              <td class="countPage"></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12 mb-3">
+          <table style="width:100%" class="">
+            <tr >
+              <th  name="td_Symboll"> №</th>
+              <th  name="td_code">Xidmət kodu</th>
+              <th  name="td_serviceCode">Xidmət</th>
+              <th  name="td_amount">Miqdar</th>
+              <th  name="td_uom">Hesablama ölçü vahidi
+              </th>
+           </tr>
+    
+           <tr *ngFor="let item of services;let i =index">
+              <td scope="row">{{i+1}}</td>
+              <td>{{item?.code }}</td>
+              <td>{{item?.onlyServiceName }}</td>
+              <td class="px-2">{{item?.quantity  }}</td>
+              <td class=" px-2">{{item?.uomName}}</td>
+          </tr>
+            <tr>
+              <td >Qeyd</td>
+              <td colspan="4"></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12 mb-3">
+          <table style="width:100%" class="">
+            <tr >
+              <th  name="td_Symboll"> №</th>
+              <th  name="th_barcode">Barkod</th>
+              <th  name="th_cargoCategoryName">Məhsul
+                növü</th>
+              <th  name="th_caliber">Kalibr</th>
+                        <!-- <th  name="td_uom"></th> -->
+                        <th  name="td_packType">Qablaşdırma
+                          növü</th>
+                        <th  name="td_packQuantity">Q.miqdarı</th>
+                        <th  >Brutto (kq)</th>
+                        <th  > Tara(kq)</th>
+                        <th  name="td_additionalTara">Əlavə tara (kq)</th>
+                        <th  name="td_additionalTara">Netto (kq)</th>
+                        <th  >İstiqaməti  </th>
+    
+                              </tr>
+    
+            <tr *ngFor="let item of products;let i =index">
+              <td scope="row">{{i+1}}</td>
+              <td>{{item?.barcode}}</td>
+              <td>{{item?.cargoCategoryName}}</td>
+              <td>{{item?.caliber}}</td>
+              <!-- <td>{{item?.uomName}}</td> -->
+              <td class=" px-2">{{item?.packType}}</td>
+              <td class=" px-2">{{item?.packQuantity}}</td>
+              <td class=" px-2">{{item?.cargoWeight}}</td>
+              <td class=" px-2">{{item?.tara}}</td>
+              <td class=" px-2">{{item?.additionalTara}}</td>
+              <td class=" px-2">{{item?.nettoKg}}</td>
+              <td class=" px-2">{{item?.warehouseCameraName}}</td>
+    
+            </tr>
+            <tr>
+              <td >Qeyd</td>
+              <td colspan="9"></td>
+            </tr>
+          </table>
+        </div>
+        <div class="col-12 mb-3">
+          <table style="width:100%" class="">
+            <tr >
+              <th  name="td_Symboll"> №</th>
+              <th  >Xidmət kodu</th>
+              <th  name="th_material"></th>
+                        <th  name="td_amount"></th>
+                        <th >Ölçü vahidi</th>
+                        <th  > Təchizatçı </th>
+                        <th  >Təchizat anbarı</th>
+                              </tr>
+            <tr *ngFor="let item of materials;let i =index">
+              <td scope="row">{{i+1}}</td>
+              <td >{{item?.serviceCode}}</td>
+              <td  *ngIf="item.isCustomerItem==true">{{item?.materialName }} </td>
+              <td  *ngIf="item.isCustomerItem!=true">{{item?.materialName }}</td>
+              <td >{{item?.quantity  }}</td>
+              <td >{{item?.uomName}}</td>
+              <td >{{item?.supplier}}</td>
+              <td >{{item?.warehouseOperator}}</td>
+    
+            </tr>
+            <tr>
+              <td >Qeyd</td>
+              <td colspan="6"></td>
+            </tr>
+    
+    
+          </table>
+    
+    
+        </div>
+    
+        <div class="col-6 bottom_print">
+          <h6>İstehsalat operatoru
+          </h6>
+          <p>{{printMain?.modifiedUser}}&nbsp;</p>
+          <p class="line"></p>
+        </div>
+    
+        <div class="col-6 bottom_print">
+          <h6>Anbardar</h6>
+               <p>{{printMain?.warehouseDocModifedUser}}&nbsp;</p>
+    
+          <p class="line"></p>
+        </div>
+    
+        <div class="col-6 bottom_print">
+          <h6>Müştəri xidmətləri</h6>
+               <p >{{printMain?.orderCreatorUser}}&nbsp;</p>
+    
+          <p class="line"></p>
+        </div>
+    
+        <div class="col-6 bottom_print">
+          <h6> Maliyyə </h6>
+          <p > &nbsp;</p>
+          <p class="line"></p>
+        </div>
+        <div class="col-6 bottom_print">
+          <h6>Müştəri</h6>
+               <p >{{printOrder?.order?.companyName}}&nbsp;</p>
+    
+          <p class="line"></p>
+        </div>
+      </div>
+    </main>
+    <footer class="footer" style="position: fixed; bottom: 0; width: 100%; text-align: center;">
+      <p class="page-number"></p>
+    </footer>
+    </div>
+    

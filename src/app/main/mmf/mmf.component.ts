@@ -72,7 +72,7 @@ export class MmfComponent {
       .subscribe((res) => {
         this.length = res.data.browse.count;
         this.statusResult = res.data.statuses;
-        debugger
+        
         this.statusResult.map(res=>{
           res.id ==1 ? res.count = this.statusWithCount[0].pendingCount :''
           res.id ==2 ? res.count = this.statusWithCount[0].cancelCount :''

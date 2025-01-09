@@ -39,6 +39,10 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NewMmfComponent } from './mmf/new-mmf/new-mmf.component';
 import { SafeStockPipe } from './categories/warehouse/print-warehouse/safe-stock-pipe.pipe';
 import { PrintWarehouseComponent } from './categories/warehouse/print-warehouse/print-warehouse.component';
+import { ProductionReadyPrintPipe } from './categories/sorting-plan/production-ready-print.pipe';
+import { ProductionEntryPipe } from './categories/sorting-plan/production-entry.pipe';
+import { ProductionEntryComponent } from './categories/sorting-plan/production-entry/production-entry.component';
+import { ProductionReadyPrintComponent } from './categories/sorting-plan/production-ready-print/production-ready-print.component';
 
 @NgModule({
   declarations: [
@@ -59,7 +63,13 @@ import { PrintWarehouseComponent } from './categories/warehouse/print-warehouse/
     ReportsComponent,
     NewMmfComponent,
     SafeStockPipe,
-    PrintWarehouseComponent
+    ProductionEntryPipe,
+    ProductionReadyPrintPipe,
+    PrintWarehouseComponent,
+    ProductionReadyPrintPipe,
+    ProductionEntryPipe,
+    ProductionEntryComponent,
+    ProductionReadyPrintComponent
          
   ],
   imports: [

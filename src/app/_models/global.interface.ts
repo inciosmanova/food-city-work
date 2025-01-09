@@ -291,6 +291,10 @@ export interface OrderBrowse {
 }
 
 export interface OrderResult2 {
+status: any;
+companyName: any;
+orderByDate: any;
+cargoName: any;
 contractType: any;
 product: any;
 cargoWeight: any;

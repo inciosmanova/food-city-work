@@ -41,9 +41,9 @@
     >
       <div
         [ngClass]="{
-                'custom-card_green green_text': item.id === 1,
-                'custom-card_yellow yellow_text  ': item.id === 2,
-                'custom-card_red red_text': item.id === 3,
+                'custom-card_green green_text': item.id === 3,
+                'custom-card_yellow yellow_text  ': item.id === 4,
+                'custom-card_red red_text': item.id === 2,
               }"
       >
         <h1>{{ item.value }}</h1>
@@ -54,34 +54,43 @@
 
   <div
     [ngClass]="{
-        'table_list_green info_green custom-card_green': item.statusId === 1,
-        'table_list_yellow info_yellow custom-card_yellow m-0': item.statusId === 2,
-        'table_list_red info_red custom-card_red m-0': item.statusId === 3,
+        'table_list_green info_green custom-card_green': item.statusId === 3,
+        'table_list_yellow info_yellow custom-card_yellow ': item.statusId === 4,
+        'table_list_red info_red custom-card_red ': item.statusId === 2,
       }"
     *ngFor="let item of browseResult"
   >
-  <iframe style="visibility: hidden;"
-  [src]="printUrl+item.id| safeStockPipe" id="frame" width="1"
-    height="1"></iframe>
-    <table>
+  <!-- <iframe style="visibility: hidden;"
+  [src]="printUrlEntry+item.id| productionEntry" id="entry_frame" width="1"
+    height="1"></iframe> -->
+    <iframe
+  #printIframe
+  style="visibility: hidden;"
+  width="1"
+  height="1"
+></iframe>
+    <!-- <iframe style="visibility: hidden;"
+    [src]="printUrlReady+item.id| productionReadyPrint" id="ready_frame" width="1"
+      height="1"></iframe>  -->
+    <table >
       <tr>
-        <td  class="head" style="cursor:pointer" (click)="openPrint()">{{ item.orderNo }}</td>
-        <td colspan="2">
-          <!-- <h4 class="green_text header d-flex">İcra edilib</h4> -->
+        <td  class="head" style="cursor:pointer" (click)="openPrint(item.docNo,item.id)">{{ item.docNo }}</td>
+        <td colspan="2" class="justify-content-end">
+          <h4 class="green_text header d-flex justify-content-end">{{item.status}}</h4>
         </td>
       </tr>
 
-      <tr>
-        <td>Müqavilə növü</td>
-        <td colspan="2">{{item.contractType}}</td>
-      
-      </tr>
+    
 
       <tr>
-        <td>Sifariş № 1</td>
-        <td>{{ item.orderType }}</td>
-        <td>{{ item.warehouseDocNo }}</td>
+        <td>Sifariş № </td>
+        <td>{{ item.orderNo }}</td>
       </tr>
+      <tr>
+        <td>Müştəri</td>
+        <td colspan="2">{{ item.companyName }}</td>
+      </tr>
+
       <tr>
         <td>Başlanma tarixi</td>
         <td colspan="2">{{ item.date }}</td>
@@ -89,12 +98,12 @@
 
       <tr>
         <td>İcra tarixi</td>
-        <td colspan="2">{{ item.plannedExecutionDate }}</td>
+        <td colspan="2">{{ item.orderByDate }}</td>
       </tr>
 
       <tr>
         <td>Məhsul</td>
-        <td colspan="2">{{item.product}}</td>
+        <td colspan="2">{{item.cargoName}}</td>
       </tr>
 
 
@@ -102,25 +111,10 @@
         <td>BİN</td>
         <td colspan="2"></td>
       </tr> -->
-      <tr>
-        <td>NV №</td>
-        <td colspan="2">{{ item.truckplate }}</td>
-      </tr>
 
-      <tr>
-        <td>Çəki</td>
-        <td colspan="2">{{ item.cargoWeight }}</td>
-      </tr>
+   
 
-      <tr>
-        <td>Səlahiyyətli nümayəndə</td>
-        <td colspan="2">{{ item.plenipotentiary }}</td>
-      </tr>
-
-      <tr>
-        <td>Kamera</td>
-        <td colspan="2">{{ item.warehouseName }}</td>
-      </tr>
+    
       <!-- <tr>
                 <td>Məhsul</td>
                 <td>Nektarin</td>
