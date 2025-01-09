@@ -72,7 +72,6 @@ status:number=0
     const dialogRef = this.dialog.open(ConfirmtextComponent);
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`);
     });
   
   }

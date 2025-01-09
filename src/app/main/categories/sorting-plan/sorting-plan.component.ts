@@ -103,19 +103,15 @@ export class SortingPlanComponent {
                   iframeWindow.print();
                 }, 3000);
               // Yazdırma işlemini başlatma
-                console.log('Yazdırma işlemi başlatıldı.');
                     } else {
                       this.openPrint(docNo,id);
                     }
             } else {
-              console.error('Iframe penceresine erişim sağlanamadı.');
             }
           } catch (error) {
-            console.error('Yazdırma sırasında bir hata oluştu:', error);
           }
         };
       } else {
-        console.error('Iframe bulunamadı!');
       }
       
     } else if(match == 'RP') {
@@ -138,20 +134,16 @@ export class SortingPlanComponent {
                 setTimeout(() => {
                   iframeWindow.print();
                 }, 3000);
-                                console.log('Yazdırma işlemi başlatıldı.');
                     } else {
                       this.openPrint(docNo,id);
                     }
      
             } else {
-              console.error('Iframe penceresine erişim sağlanamadı.');
             }
           } catch (error) {
-            console.error('Yazdırma sırasında bir hata oluştu:', error);
           }
         };
       } else {
-        console.error('Iframe bulunamadı!');
       }
       
     }
@@ -189,7 +181,6 @@ export class SortingPlanComponent {
     const dialogRef = this.dialog.open(ConfirmtextComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
 }

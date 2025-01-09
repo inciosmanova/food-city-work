@@ -49,7 +49,6 @@ export class NewMmfComponent {
   }
   getById() {
     this.globalService.getCompanyApplicationById(this.id).subscribe((res) => {
-      console.log(res);
       this.getForm = res.data.main;
       this.getServices = res.data.services;
       this.selectType(this.getForm.contractId, 'contract');
@@ -183,7 +182,6 @@ export class NewMmfComponent {
     const item = this.items.at(index); // İlgili elemanı bul
     item.patchValue({ status: false }); // Status değe
     // this.items.removeAt(index);
-    console.log(this.form);
   }
   back() {
     this.router.navigate(['/modules/main/mmf']);

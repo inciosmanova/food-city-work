@@ -93,7 +93,6 @@ export class MmfComponent {
     const dialogRef = this.dialog.open(ConfirmtextComponent);
 
     dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
     });
   }
   addMMF(id:any=0) {

@@ -100,19 +100,15 @@ resultBrowse: any;
                   iframeWindow.print();
                 }, 3000);
               // Yazdırma işlemini başlatma
-                console.log('Yazdırma işlemi başlatıldı.');
                     } else {
                       this.openPrint(id);
                     }
             } else {
-              console.error('Iframe penceresine erişim sağlanamadı.');
             }
           } catch (error) {
-            console.error('Yazdırma sırasında bir hata oluştu:', error);
           }
         };
       } else {
-        console.error('Iframe bulunamadı!');
       }
       
    
